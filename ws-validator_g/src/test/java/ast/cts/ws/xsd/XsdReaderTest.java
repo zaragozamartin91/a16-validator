@@ -9,9 +9,7 @@ import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class XsdReaderTest {
 
@@ -39,19 +37,24 @@ public class XsdReaderTest {
 	public void testGetElement() throws Exception {
 		XsdReader xsdReader = XsdReader.fromStream(getComplexXsdStream());
 
-		XsdElement element1 = xsdReader.getElement("SegundoFiltroFil", "iDatosTitular");
-		assertFalse(element1.isVoid());
-		assertFalse(element1.isComplex());
+		XsdElement simpleElement = xsdReader.getElement("SegundoFiltroFil", "iDatosTitular");
+		assertFalse(simpleElement.isVoid());
+		assertFalse(simpleElement.isComplex());
 
-		XsdElement element2 = xsdReader.getElement("SegundoFiltroFil", "iArrayLineas");
-		assertFalse(element2.isVoid());
-		assertTrue(element2.isComplex());
+		XsdElement nonExistentChild = simpleElement.getComplexChild();
+		assertEquals(XsdElement.VOID, nonExistentChild);
+		assertTrue(nonExistentChild.getType().isEmpty());
 
-		XsdElement element2ComplexChild = element2.getComplexChild();
-		assertFalse(element2ComplexChild.isVoid());
-		assertFalse(element2ComplexChild.isComplex());
+		XsdElement complexElement = xsdReader.getElement("SegundoFiltroFil", "iArrayLineas");
+		assertFalse(complexElement.isVoid());
+		assertTrue(complexElement.isComplex());
+		assertTrue(complexElement.getType().isEmpty());
 
-		assertEquals("IarrayLineas", element2ComplexChild.getType("tns"));
-		assertEquals("IarrayLineas", element2ComplexChild.getType("tns:"));
+		XsdElement complexChild = complexElement.getComplexChild();
+		assertFalse(complexChild.isVoid());
+		assertFalse(complexChild.isComplex());
+
+		assertEquals("IarrayLineas", complexChild.getType("tns"));
+		assertEquals("IarrayLineas", complexChild.getType("tns:"));
 	}
 }

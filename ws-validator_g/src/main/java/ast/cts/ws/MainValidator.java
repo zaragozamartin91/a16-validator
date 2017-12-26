@@ -1,7 +1,6 @@
 package ast.cts.ws;
 
 import ast.cts.ws.a16.A16Doc;
-import ast.cts.ws.a16.A16Table;
 import ast.cts.ws.util.TypeComparator;
 import ast.cts.ws.xsd.XsdElement;
 import ast.cts.ws.xsd.XsdReader;
@@ -9,10 +8,9 @@ import ast.cts.ws.xsd.XsdReader;
 import javax.xml.xpath.XPathExpressionException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MainValidator {
-	private A16Doc a16Doc;
+	private final A16Doc a16Doc;
 	private XsdReader xsdReader;
 	private String xsdTypePrefix;
 	private TypeComparator typeComparator;
@@ -26,13 +24,14 @@ public class MainValidator {
 
 	public void validate() {
 		final List<String> errMsgs = new ArrayList<>();
-		Map<String, A16Table> tables = a16Doc.getTables();
 
-		tables.values().forEach(table -> {
+		a16Doc.forEachTable(table -> {
 			final String tableTitle = table.getTitle();
 
-			table.getRows().forEach(row -> {
+			table.forEachRow(row -> {
 				String a16rowName = row.name;
+
+				System.out.printf("Examinando fila %s%n", a16rowName);
 
 				XsdElement xsdElement;
 				try {
@@ -43,11 +42,26 @@ public class MainValidator {
 					return;
 				}
 
-				if (xsdElement.isVoid()) {return;}
+				/* Si el campo del a16 no se encuentra en el xsd, entonces agrego un mensaje de error */
+				if (xsdElement.isVoid()) {
+					errMsgs.add(String.format("El campo %s#%s del A16 no fue hallado en el Xsd", tableTitle, a16rowName));
+					return;
+				}
 
 				String a16rowRawType = row.type;
-				String a16type = typeComparator.parseType(a16rowRawType);
+				String a16ParsedType = typeComparator.parseType(a16rowRawType);
 
+				if (typeComparator.isUnknown(a16ParsedType)) {
+
+					/* Si el parseador de tipos determino que es "desconocido" y el tipo no representa alguna de las otras tablas del doc a16,
+					* entonces se determina que el tipo es invalido */
+					if (a16Doc.isNotCustomType(a16rowRawType)) {
+						errMsgs.add(String.format("El tipo %s del campo %s#%s del A16 es invalido!", a16rowRawType, tableTitle, a16rowName));
+						return;
+					}
+
+
+				}
 
 			});
 		});

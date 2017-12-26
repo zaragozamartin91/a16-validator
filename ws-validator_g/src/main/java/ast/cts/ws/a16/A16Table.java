@@ -2,6 +2,7 @@ package ast.cts.ws.a16;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class A16Table {
 	private String title;
@@ -19,6 +20,8 @@ public class A16Table {
 	public Set<A16Row> getRows() { return new HashSet<>(rows); }
 
 	public String getTitle() { return title; }
+
+	public void forEachRow(Consumer<A16Row> consumer) { getRows().forEach(consumer); }
 
 	@Override public String toString() {
 		return "A16Table{" +
