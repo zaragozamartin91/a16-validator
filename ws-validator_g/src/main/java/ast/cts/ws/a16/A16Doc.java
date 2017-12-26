@@ -19,7 +19,9 @@ public class A16Doc {
 
 	public void forEachTable(Consumer<A16Table> consumer) { getTables().values().forEach(consumer); }
 
-	public boolean isCustomType(String typeName) { return tables.keySet().stream().anyMatch(typeName::equalsIgnoreCase); }
+	public boolean isCustomType(String typeName) {
+		return tables.keySet().stream().anyMatch(typeName::equalsIgnoreCase);
+	}
 
 	public boolean isNotCustomType(String typeName) { return !this.isCustomType(typeName); }
 }

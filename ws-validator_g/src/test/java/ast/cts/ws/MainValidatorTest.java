@@ -18,7 +18,8 @@ public class MainValidatorTest {
 		String colDelim = "\t";
 		String inputName = "SegundoFiltroFil";
 		String outputName = "SegundoFiltroRet";
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName);
+		boolean lenientRead = true;
+		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead);
 
 		InputStream a16stream = MainValidatorTest.class.getClassLoader().getResourceAsStream("SegundoFiltro-input.txt");
 		A16Doc a16doc = a16DocReader.readA16Txt(a16stream);
@@ -30,12 +31,12 @@ public class MainValidatorTest {
 		String xsdComplexTypePrefix = "tns";
 
 		List<String> intAliases = Arrays.asList("numero", "numerico", "int", "integer");
-		List<String> stringAliases = Arrays.asList("texto", "char", "varchar");
+		List<String> stringAliases = Arrays.asList("texto", "char", "varchar", "fecha");
 		List<String> decimalAliases = Arrays.asList("money", "moneda");
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
 		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
-		boolean lenientCheck = true;
+		boolean lenientCheck = lenientRead;
 		List<String> errMsgs = mainValidator.validate(lenientCheck);
 
 		System.out.println();

@@ -1,12 +1,12 @@
 package ast.cts.ws.a16;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
 public class A16Table {
 	private String title;
-	private Set<A16Row> rows = new HashSet<>();
+	private Set<A16Row> rows = new LinkedHashSet<>();
 
 	public A16Table(String title) {
 		this.title = title;
@@ -17,7 +17,7 @@ public class A16Table {
 		return this;
 	}
 
-	public Set<A16Row> getRows() { return new HashSet<>(rows); }
+	public Set<A16Row> getRows() { return new LinkedHashSet<>(rows); }
 
 	public String getTitle() { return title; }
 

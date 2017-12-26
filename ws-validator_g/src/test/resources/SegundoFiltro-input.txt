@@ -31,7 +31,6 @@
 	iArraySublineas	iArraySublineas		Lista de sublíneas. Máximo 70.
 	iArrayLineasDR	iArrayLineasDR		Lista de líneas. Máximo 15.
 	iArraySublineasDR	iArraySublineasDR		Lista de sublineas. Máximo 30.
-	iDatosDeudaRiesgo	iDatosDeudaRiesgo		Agrupa dos listas, una de líneas y otra de sublineas
 	iDatosBasicos	iDatosBasicos		Agrupa los datos básicos
 	iDatosEECCMMBB	iDatosEECCMMBB		Agrupa los datos de EECC y MMBB
 	iDatosEECC	iDatosEECC		Agrupa los datos de EECC

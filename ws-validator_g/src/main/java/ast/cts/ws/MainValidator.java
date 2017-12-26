@@ -51,34 +51,33 @@ public class MainValidator {
 				try {
 					xsdElement = xsdReader.getElement(tableTitle, a16rowName);
 				} catch (XPathExpressionException e) {
-					errMsgs.add(String.format("Error al leer el campo %s#%s del xsd", tableTitle, a16rowName));
+					errMsgs.add(String.format("Error al leer el campo %s->%s del XSD", tableTitle, a16rowName));
 					e.printStackTrace();
 					return;
 				}
 
-				/* Si el campo del a16 no se encuentra en el xsd, entonces agrego un mensaje de error */
 				if (xsdElement.isVoid()) {
-					errMsgs.add(String.format("El campo %s#%s del A16 no fue hallado en el Xsd", tableTitle, a16rowName));
+					/* Si el campo del a16 no se encuentra en el xsd, entonces agrego un mensaje de error */
+					errMsgs.add(String.format("El campo %s->%s del A16 no fue hallado en el XSD", tableTitle, a16rowName));
 					return;
 				}
 
 				String a16rowRawType = row.type;
 				String a16ParsedType = typeComparator.parseType(a16rowRawType);
 
-				/* Si el parseador de tipos determino que es "desconocido" y el tipo no representa alguna de las otras tablas del doc a16,
-				* entonces se determina que el tipo es invalido */
+				/* Si el parseador de tipos determino que es "desconocido" ...*/
 				if (typeComparator.isUnknown(a16ParsedType)) {
-					// si el tipo parseado figura como unknown...
 
 					if (a16Doc.isNotCustomType(a16rowRawType)) {
-						errMsgs.add(String.format("El tipo %s del campo %s#%s del A16 es invalido!", a16rowRawType, tableTitle, a16rowName));
+						// si el tipo ademas de ser desconocido NO figura en las tablas del a16 -> el tipo es invalido
+						errMsgs.add(String.format("El tipo %s del campo %s->%s del A16 es invalido!", a16rowRawType, tableTitle, a16rowName));
 						return;
 					}
 
-					// si el tipo es custom...
-
 					if (!xsdElement.hasType(a16rowRawType, xsdComplexTypePrefix)) {
-						errMsgs.add(String.format("El tipo %s del campo %s#%s figura como tipo complejo en el A16 pero no corresponde con el tipo del xsd",
+						/* si el tipo es desconocido, figura en las tablasd el a16 pero el nombre del mismo no coincide con el tipo del
+						 * elemento correspondiente en el a16 entonces el tipo es invalido (probablemente el nombre este mal) */
+						errMsgs.add(String.format("El tipo %s del campo %s->%s figura como tipo complejo en el A16 pero no corresponde con el tipo del XSD",
 								a16rowRawType,
 								tableTitle,
 								a16rowName));
@@ -87,15 +86,19 @@ public class MainValidator {
 				}
 
 				// si el tipo es basico...
-
-				if (!xsdElement.hasType(a16ParsedType, xsdBasicTypePrefix)) {
-					errMsgs.add(String.format("El tipo %s del campo %s#%s del A16 no corresponde con el tipo %s del XSD!",
-							a16rowRawType,
-							tableTitle,
-							a16rowName,
-							xsdElement.getType(xsdBasicTypePrefix)));
-					return;
+				if (typeComparator.isBasic(a16ParsedType)) {
+					if (!xsdElement.hasType(a16ParsedType, xsdBasicTypePrefix)) {
+						/* Si el tipo del a16 es detectado como basico pero no corresponde con el tipo del elemento en el XSD entonces
+						 * el tipo es incorrecto  */
+						errMsgs.add(String.format("El tipo %s del campo %s->%s del A16 no coincide con el tipo %s del XSD!",
+								a16rowRawType,
+								tableTitle,
+								a16rowName,
+								xsdElement.getType(xsdBasicTypePrefix)));
+						return;
+					}
 				}
+
 			});
 		});
 

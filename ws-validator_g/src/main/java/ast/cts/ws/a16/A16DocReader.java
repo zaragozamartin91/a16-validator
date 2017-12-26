@@ -17,28 +17,31 @@ public class A16DocReader {
 	private String colDelim;
 	private String inputName;
 	private String outputName;
+	private boolean lenientRead;
 
-	public A16DocReader(int nameCol, int typeCol, String colDelim, String inputName, String outputName) {
+	public A16DocReader(int nameCol, int typeCol, String colDelim, String inputName, String outputName, boolean lenientRead) {
 		this.nameCol = nameCol;
 		this.typeCol = typeCol;
 		this.colDelim = colDelim;
 		this.inputName = inputName;
 		this.outputName = outputName;
+		this.lenientRead = lenientRead;
 	}
 
-	private A16DocReader(InputStream fileStream, int nameCol, int typeCol, String colDelim, String inputName, String outputName) {
+	private A16DocReader(InputStream fileStream, int nameCol, int typeCol, String colDelim, String inputName, String outputName, boolean lenientRead) {
 		this.fileStream = fileStream;
 		this.nameCol = nameCol;
 		this.typeCol = typeCol;
 		this.colDelim = colDelim;
 		this.inputName = inputName;
 		this.outputName = outputName;
+		this.lenientRead = lenientRead;
 
 		expectedCols = Math.max(nameCol, typeCol) + 1;
 	}
 
 	public A16Doc readA16Txt(InputStream fileStream) throws IOException {
-		return new A16DocReader(fileStream, nameCol, typeCol, colDelim, inputName, outputName).readA16Txt();
+		return new A16DocReader(fileStream, nameCol, typeCol, colDelim, inputName, outputName, lenientRead).readA16Txt();
 	}
 
 	private A16Doc readA16Txt() throws IOException {
@@ -75,7 +78,7 @@ public class A16DocReader {
 	private String transformTitle(String title) {
 		if ("input".equalsIgnoreCase(title)) { return inputName; }
 		if ("output".equalsIgnoreCase(title)) { return outputName; }
-		return title;
+		return lenientRead ? StringStandardizer.INSTANCE.capitalize(title) : title;
 	}
 
 	private boolean addRows(A16Table table, BufferedReader bufferedReader) throws IOException {
@@ -95,7 +98,9 @@ public class A16DocReader {
 			/* Si la cantidad de columnas de la fila es 2 entonces agrego una nueva fila a la tabla de a16
 			 * Caso contrario, es una "fila fallida" que debe ser ignorada */
 			if (split.length >= expectedCols) {
-				String name = split[nameCol];
+				String rawName = split[nameCol];
+				String name = lenientRead ? StringStandardizer.INSTANCE.deCapitalize(rawName) : rawName;
+
 				String type = split[typeCol];
 				table.addRow(name, type);
 				System.out.printf("Fila agregada: %s, %s%n", name, type);
