@@ -2,6 +2,7 @@ package ast.cts.ws;
 
 import ast.cts.ws.a16.A16Doc;
 import ast.cts.ws.a16.A16DocReader;
+import ast.cts.ws.util.ConsoleWriter;
 import ast.cts.ws.util.TypeComparator;
 import ast.cts.ws.xsd.XsdReader;
 import org.junit.Test;
@@ -37,11 +38,14 @@ public class MainValidatorTest {
 
 		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
 		boolean lenientCheck = lenientRead;
-		List<String> errMsgs = mainValidator.validate(lenientCheck);
+		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate(lenientCheck);
 
 		System.out.println();
-		System.out.println("Errores detectados:");
-		errMsgs.stream().forEach(System.out::println);
+		System.out.println("MENSAJES:");
+		validatorMessages.forEach(valMsg -> {
+			ConsoleWriter consoleWriter = valMsg.ok ? ConsoleWriter.GREEN : ConsoleWriter.RED;
+			consoleWriter.println(valMsg.msg);
+		});
 	}
 
 }

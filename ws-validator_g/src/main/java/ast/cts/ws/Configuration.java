@@ -25,6 +25,7 @@ public class Configuration {
 	private List<String> decimalAliases = new ArrayList<>();
 	private String xsdBasicTypePrefix;
 	private String xsdComplexTypePrefix;
+	private boolean lenientSwitchOn;
 
 	public static Configuration getInstance() { return ourInstance; }
 
@@ -65,6 +66,8 @@ public class Configuration {
 
 		xsdBasicTypePrefix = properties.getProperty("type.xsd.prefix.basic", "").trim();
 		xsdComplexTypePrefix = properties.getProperty("type.xsd.prefix.custom", "").trim();
+
+		lenientSwitchOn = Boolean.parseBoolean(properties.getProperty("switch.lenient.on", "false").trim());
 	}
 
 	private void validateProps() {
@@ -84,4 +87,6 @@ public class Configuration {
 	public String getXsdBasicTypePrefix() { return xsdBasicTypePrefix; }
 
 	public String getXsdComplexTypePrefix() { return xsdComplexTypePrefix; }
+
+	public boolean isLenientSwitchOn() { return lenientSwitchOn; }
 }

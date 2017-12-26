@@ -48,6 +48,17 @@ public class XsdReader {
 		return nodes.getLength() == 1;
 	}
 
+	public boolean typeExists(String typeName) {
+		try {
+			XPathExpression expr = XPATH.compile(String.format("/schema/complexType[@name='%s']", typeName));
+			NodeList nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
+
+			return nodes.getLength() >= 1;
+		} catch (XPathExpressionException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	public XsdElement getElement(String typeName, String elementName) throws XPathExpressionException {
 		XPathExpression expr = XPATH
 				.compile(String.format("//complexType[@name='%s']/sequence/element[@name='%s']", typeName, elementName));

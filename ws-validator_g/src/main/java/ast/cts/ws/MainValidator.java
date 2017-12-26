@@ -27,38 +27,53 @@ public class MainValidator {
 		this.typeComparator = typeComparator;
 	}
 
+	public static class ValidatorMessage {
+		public final boolean ok;
+		public final String msg;
+
+		public ValidatorMessage(boolean ok, String msg) {
+			this.ok = ok;
+			this.msg = msg;
+		}
+	}
+
 	/**
 	 * Valida el documento a16 escaneado contra el xsd del servicio web.
 	 *
 	 * @param lenientCheck True si el chequeo debe ser "permisivo", false en caso contrario.
 	 * @return Lista con errores.
 	 */
-	public List<String> validate(boolean lenientCheck) {
+	public List<ValidatorMessage> validate(boolean lenientCheck) {
 		if (lenientCheck) { System.out.println("Chequeo permisivo ACTIVO"); }
 
-		final List<String> errMsgs = new ArrayList<>();
+		final List<ValidatorMessage> validatorMessages = new ArrayList<>();
 
 		a16Doc.forEachTable(table -> {
 			final String tableTitle = lenientCheck ? STRING_STANDARDIZER.capitalize(table.getTitle()) : table.getTitle();
-			System.out.println();
-			System.out.println("Examinando tabla " + tableTitle);
+
+			boolean typeExists = xsdReader.typeExists(tableTitle);
+			if (!typeExists) {
+				validatorMessages.add(new ValidatorMessage(false, "El tipo " + tableTitle + " no existe en el XSD!"));
+				return;
+			}
 
 			table.forEachRow(row -> {
 				String a16rowName = lenientCheck ? STRING_STANDARDIZER.deCapitalize(row.name) : row.name;
-				System.out.printf("Examinando fila %s%n", a16rowName);
 
 				XsdElement xsdElement;
 				try {
 					xsdElement = xsdReader.getElement(tableTitle, a16rowName);
 				} catch (XPathExpressionException e) {
-					errMsgs.add(String.format("Error al leer el campo %s->%s del XSD", tableTitle, a16rowName));
+					String msg = String.format("Error al leer el campo %s->%s del XSD", tableTitle, a16rowName);
+					validatorMessages.add(new ValidatorMessage(false, msg));
 					e.printStackTrace();
 					return;
 				}
 
 				if (xsdElement.isVoid()) {
 					/* Si el campo del a16 no se encuentra en el xsd, entonces agrego un mensaje de error */
-					errMsgs.add(String.format("El campo %s->%s del A16 no fue hallado en el XSD", tableTitle, a16rowName));
+					String msg = String.format("El campo %s->%s del A16 no fue hallado en el XSD", tableTitle, a16rowName);
+					validatorMessages.add(new ValidatorMessage(false, msg));
 					return;
 				}
 
@@ -70,19 +85,25 @@ public class MainValidator {
 
 					if (a16Doc.isNotCustomType(a16rowRawType)) {
 						// si el tipo ademas de ser desconocido NO figura en las tablas del a16 -> el tipo es invalido
-						errMsgs.add(String.format("El tipo %s del campo %s->%s del A16 es invalido!", a16rowRawType, tableTitle, a16rowName));
+						String msg = String.format("El tipo \"%s\" del campo %s->%s del A16 es INVALIDO!", a16rowRawType, tableTitle, a16rowName);
+						validatorMessages.add(new ValidatorMessage(false, msg));
 						return;
 					}
 
 					if (!xsdElement.hasType(a16rowRawType, xsdComplexTypePrefix)) {
 						/* si el tipo es desconocido, figura en las tablasd el a16 pero el nombre del mismo no coincide con el tipo del
 						 * elemento correspondiente en el a16 entonces el tipo es invalido (probablemente el nombre este mal) */
-						errMsgs.add(String.format("El tipo %s del campo %s->%s figura como tipo complejo en el A16 pero no corresponde con el tipo del XSD",
-								a16rowRawType,
-								tableTitle,
-								a16rowName));
+						String msg = String
+								.format("El tipo \"%s\" del campo %s->%s figura como tipo complejo en el A16 pero no corresponde con el tipo del XSD",
+										a16rowRawType,
+										tableTitle,
+										a16rowName);
+						validatorMessages.add(new ValidatorMessage(false, msg));
 						return;
 					}
+
+					// si se llego hasta aqui entonces el campo esta bien
+					validatorMessages.add(new ValidatorMessage(true, String.format("Campo %s->%s OK!", tableTitle, a16rowName)));
 				}
 
 				// si el tipo es basico...
@@ -90,18 +111,21 @@ public class MainValidator {
 					if (!xsdElement.hasType(a16ParsedType, xsdBasicTypePrefix)) {
 						/* Si el tipo del a16 es detectado como basico pero no corresponde con el tipo del elemento en el XSD entonces
 						 * el tipo es incorrecto  */
-						errMsgs.add(String.format("El tipo %s del campo %s->%s del A16 no coincide con el tipo %s del XSD!",
+						String msg = String.format("El tipo %s del campo %s->%s del A16 no coincide con el tipo %s del XSD!",
 								a16rowRawType,
 								tableTitle,
 								a16rowName,
-								xsdElement.getType(xsdBasicTypePrefix)));
+								xsdElement.getType(xsdBasicTypePrefix));
+						validatorMessages.add(new ValidatorMessage(false, msg));
 						return;
 					}
-				}
 
+					// si se llego hasta aqui entonces el campo esta bien
+					validatorMessages.add(new ValidatorMessage(true, String.format("Campo %s->%s OK!", tableTitle, a16rowName)));
+				}
 			});
 		});
 
-		return errMsgs;
+		return validatorMessages;
 	}
 }
