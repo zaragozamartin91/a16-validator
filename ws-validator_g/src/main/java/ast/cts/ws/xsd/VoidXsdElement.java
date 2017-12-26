@@ -14,9 +14,9 @@ public class VoidXsdElement implements XsdElement {
 
 	private VoidXsdElement() { }
 
-	@Override public String getType() throws XPathExpressionException { return "";}
+	@Override public String getType()  { return "";}
 
-	@Override public String getType(String typePrefix) throws XPathExpressionException { return ""; }
+	@Override public String getType(String typePrefix)  { return ""; }
 
 	@Override public boolean isVoid() { return true; }
 
@@ -24,7 +24,7 @@ public class VoidXsdElement implements XsdElement {
 
 	@Override public XsdElement getComplexChild() throws XPathExpressionException { return this; }
 
-	@Override public boolean hasChildrenWithType(String type, String typePrefix) throws XPathExpressionException { return false; }
+	@Override public boolean hasType(String type, String typePrefix)  { return false; }
 
 	@Override public String toString() { return "VoidXsdElement{}"; }
 }

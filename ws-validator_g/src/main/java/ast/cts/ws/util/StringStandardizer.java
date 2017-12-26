@@ -18,4 +18,16 @@ public enum StringStandardizer {
 				.replaceAll("ú", "u")
 				.replaceAll("ñ", "n");
 	}
+
+	public String capitalize(String line) {
+		if (line.isEmpty()) { return ""; }
+		if (line.length() == 1) { return line.toUpperCase(); }
+		return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+	}
+
+	public String deCapitalize(String line) {
+		if (line.isEmpty()) { return ""; }
+		if (line.length() == 1) { return line.toLowerCase(); }
+		return Character.toLowerCase(line.charAt(0)) + line.substring(1);
+	}
 }

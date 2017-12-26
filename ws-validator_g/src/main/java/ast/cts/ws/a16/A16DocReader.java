@@ -54,7 +54,6 @@ public class A16DocReader {
 			String[] split = line.split(",");
 
 			if (isTitle(split)) {
-				// TODO : AGREGAR UNA CONFIGURACION O ALGO PARA TRANSFORMAR LOS TITULOS Input Y Output EN NOMBRES DE FILS
 				String rawTitle = getTitle(split);
 				String title = transformTitle(rawTitle);
 
@@ -96,7 +95,6 @@ public class A16DocReader {
 			/* Si la cantidad de columnas de la fila es 2 entonces agrego una nueva fila a la tabla de a16
 			 * Caso contrario, es una "fila fallida" que debe ser ignorada */
 			if (split.length >= expectedCols) {
-				// TODO : AGREGAR UN PARAMETRO DE CONFIGURACION O ALGO PARA INDICAR LAS COLUMNAS
 				String name = split[nameCol];
 				String type = split[typeCol];
 				table.addRow(name, type);
@@ -108,7 +106,6 @@ public class A16DocReader {
 	}
 
 	private String standarizeLine(String line) {
-		// TODO : AGREGAR UNA CONFIGURACION PARA DETERMINAR EL SEPARADOR (POR DEFECTO ES TAB)
 		return StringStandardizer.INSTANCE
 				.replaceSpecialChars(line)
 				.replaceAll(colDelim + "+", ",")

@@ -63,8 +63,8 @@ public class Configuration {
 				.map(s -> s.trim().toLowerCase())
 				.collect(Collectors.toList());
 
-		xsdBasicTypePrefix = properties.getProperty("type.xsd.prefix.basic").trim();
-		xsdComplexTypePrefix = properties.getProperty("type.xsd.prefix.custom").trim();
+		xsdBasicTypePrefix = properties.getProperty("type.xsd.prefix.basic", "").trim();
+		xsdComplexTypePrefix = properties.getProperty("type.xsd.prefix.custom", "").trim();
 	}
 
 	private void validateProps() {

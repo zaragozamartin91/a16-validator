@@ -49,7 +49,7 @@ public class XsdReaderTest {
 		assertFalse(complexElement.isVoid());
 		assertTrue(complexElement.isComplex());
 		assertTrue(complexElement.getType().isEmpty());
-		assertTrue(complexElement.hasChildrenWithType("IarrayLineas", "tns"));
+		assertTrue(complexElement.hasType("IarrayLineas", "tns"));
 
 		XsdElement complexChild = complexElement.getComplexChild();
 		assertFalse(complexChild.isVoid());

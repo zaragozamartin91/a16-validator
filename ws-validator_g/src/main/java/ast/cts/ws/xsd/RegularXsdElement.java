@@ -18,25 +18,31 @@ public class RegularXsdElement implements XsdElement {
 		this.node = node;
 	}
 
-	@Override public String getType() throws XPathExpressionException {
-		XPathExpression expr = XPATH.compile("@type");
-		String elemType = (String) expr.evaluate(node, XPathConstants.STRING);
+	@Override public String getType() {
+		try {
+			XPathExpression expr = XPATH.compile("@type");
+			String elemType = (String) expr.evaluate(node, XPathConstants.STRING);
 
-		return elemType;
+			return elemType;
+		} catch (XPathExpressionException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	@Override public String getType(String typePrefix) throws XPathExpressionException {
+	@Override public String getType(String typePrefix) {
 		if (typePrefix == null || typePrefix.isEmpty()) { return this.getType(); }
 
-		XPathExpression expr = XPATH.compile("@type");
-		String elemType = (String) expr.evaluate(node, XPathConstants.STRING);
+		try {
+			XPathExpression expr = XPATH.compile("@type");
+			String elemType = (String) expr.evaluate(node, XPathConstants.STRING);
 
-		typePrefix = typePrefix.contains(":") ? typePrefix : typePrefix + ":";
+			typePrefix = typePrefix.contains(":") ? typePrefix : typePrefix + ":";
 
-		return elemType.replaceAll(Pattern.quote(typePrefix), "");
+			return elemType.replaceAll(Pattern.quote(typePrefix), "");
+		} catch (XPathExpressionException e) {
+			throw new RuntimeException(e);
+		}
 	}
-
-	@Override public boolean isVoid() { return false; }
 
 	@Override public boolean isComplex() throws XPathExpressionException {
 		XPathExpression expr = XPATH.compile("complexType/sequence/element");
@@ -50,9 +56,13 @@ public class RegularXsdElement implements XsdElement {
 		return node == null ? RegularXsdElement.VOID : new RegularXsdElement(node);
 	}
 
-	@Override public boolean hasChildrenWithType(String type, String typePrefix) throws XPathExpressionException {
-		String elemType = this.getType(typePrefix);
-		return type.equalsIgnoreCase(elemType) || this.getComplexChild().hasChildrenWithType(type, typePrefix);
+	@Override public boolean hasType(String type, String typePrefix) {
+		try {
+			String elemType = this.getType(typePrefix);
+			return type.equalsIgnoreCase(elemType) || this.getComplexChild().hasType(type, typePrefix);
+		} catch (XPathExpressionException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override public String toString() {
