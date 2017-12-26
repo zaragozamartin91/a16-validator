@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"  targetNamespace="http://dto.consultagruposriesgo.ecobis.cobiscorp" xmlns:dto="http://dto.consultagruposriesgo.ecobis.cobiscorp" xmlns:dto2="http://dto2.sdf.cts.cobis.cobiscorp.com">
+	<import schemaLocation="commonDTO2.xsd" namespace="http://dto2.sdf.cts.cobis.cobiscorp.com" />
+	<simpleType name="char">
+		<restriction base="string">
+			<length value="1" />
+		</restriction>
+	</simpleType>
+	
+	<complexType name="ConsultaGrupoRiesgoFil">
+		<sequence>
+			<element name="iCtipoIdTributario" type="string" minOccurs="0" />
+			<element name="iNidTributario" type="string" minOccurs="0" />
+			<element name="iCtipoGrupo" type="string" minOccurs="0" />
+			<element name="iSgrupo" type="int" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="ConsultaGruposRiesgoRet">
+		<sequence>
+			<element name="oSgrupo" type="string" minOccurs="0" />
+			<element name="oDnombreGrupo" type="string" minOccurs="0" />
+			<element name="oMposeeGrupo" type="string" minOccurs="0" />
+			<element name="oDobservacion" type="string" minOccurs="0" />
+			<element name="oCbanca" type="string" minOccurs="0" />
+			<element name="oCsegmento" type="string" minOccurs="0" />
+			<element name="oUoficial" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="ConsultaIntegrantesGRiesgoRes">
+		<complexContent>
+			<extension base="dto2:CTSServiceResponseTO">
+				<sequence>
+					<element name="arrayMiembrosGrupo" type="dto:OMiembrosGrupo" nillable="true" maxOccurs="unbounded" minOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="OMiembrosGrupo">
+		<sequence>
+			<element name="oSgrupo" type="int" minOccurs="0" />
+			<element name="oDgrupo" type="string" minOccurs="0" />
+			<element name="oMvinculacion" type="string" minOccurs="0" />
+			<element name="oCtipoIdCte" type="string" minOccurs="0" />
+			<element name="oNidCte" type="string" minOccurs="0" />
+			<element name="oCclienteCte" type="int" minOccurs="0" />
+			<element name="oDcontrolante" type="string" minOccurs="0" />
+			<element name="oCtipoIdCda" type="string" minOccurs="0" />
+			<element name="oNidCda" type="string" minOccurs="0" />
+			<element name="oCclienteCda" type="int" minOccurs="0" />
+			<element name="oDcontrolada" type="string" minOccurs="0" />
+			<element name="oPparticipacion" type="decimal" minOccurs="0" />
+			<element name="oMdirector" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="ConsultaGruposRiesgoRes">
+		<complexContent>
+			<extension base="dto2:CTSServiceResponseTO">
+				<sequence>
+					<element name="arrayConsultaGrupos" type="dto:ConsultaGruposRiesgoRet" minOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>

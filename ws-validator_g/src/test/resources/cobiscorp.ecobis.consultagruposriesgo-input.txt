@@ -1,0 +1,4 @@
+i_c_tipo_id_tributario	varchar
+i_n_id_tributario	varchar
+i_s_grupo	interger
+i_c_tipo_grupo	Char(1)

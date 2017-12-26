@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.cts.ast/" targetNamespace="http://webservices.cts.ast/" version="1.0">
+
+  <xs:element name="IarrayAdicionalNum" type="tns:IarrayAdicionalNum"/>
+
+  <xs:element name="IarrayAdicionalTexto" type="tns:IarrayAdicionalTexto"/>
+
+  <xs:element name="IarrayIntegrantes" type="tns:IarrayIntegrantes"/>
+
+  <xs:element name="IarrayLineas" type="tns:IarrayLineas"/>
+
+  <xs:element name="IarrayLineasDr" type="tns:IarrayLineasDr"/>
+
+  <xs:element name="IarrayPrevaluacion" type="tns:IarrayPrevaluacion"/>
+
+  <xs:element name="IarrayReservaNum" type="tns:IarrayReservaNum"/>
+
+  <xs:element name="IarrayReservaTexto" type="tns:IarrayReservaTexto"/>
+
+  <xs:element name="IarraySublineas" type="tns:IarraySublineas"/>
+
+  <xs:element name="IarraySublineasDr" type="tns:IarraySublineasDr"/>
+
+  <xs:element name="IdatosBasicos" type="tns:IdatosBasicos"/>
+
+  <xs:element name="IdatosCuadroResultados" type="tns:IdatosCuadroResultados"/>
+
+  <xs:element name="IdatosDeudaRiesgo" type="tns:IdatosDeudaRiesgo"/>
+
+  <xs:element name="IdatosDeudas" type="tns:IdatosDeudas"/>
+
+  <xs:element name="IdatosEeCc" type="tns:IdatosEeCc"/>
+
+  <xs:element name="IdatosEeCcMmBb" type="tns:IdatosEeCcMmBb"/>
+
+  <xs:element name="IdatosGrupoRiesgo" type="tns:IdatosGrupoRiesgo"/>
+
+  <xs:element name="IdatosSolicitudCalif" type="tns:IdatosSolicitudCalif"/>
+
+  <xs:element name="IdatosTitular" type="tns:IdatosTitular"/>
+
+  <xs:element name="IdatosVentas" type="tns:IdatosVentas"/>
+
+  <xs:element name="OarrayAdicionalNum" type="tns:OarrayAdicionalNum"/>
+
+  <xs:element name="OarrayAdicionalTexto" type="tns:OarrayAdicionalTexto"/>
+
+  <xs:element name="OarrayMontosRecomendados" type="tns:OarrayMontosRecomendados"/>
+
+  <xs:element name="OarrayValorLibre" type="tns:OarrayValorLibre"/>
+
+  <xs:element name="OarrayVentasPostCierreMes" type="tns:OarrayVentasPostCierreMes"/>
+
+  <xs:element name="OdatosAfectaciones" type="tns:OdatosAfectaciones"/>
+
+  <xs:element name="OdatosAfectacionesCl" type="tns:OdatosAfectacionesCl"/>
+
+  <xs:element name="OdatosBasicos" type="tns:OdatosBasicos"/>
+
+  <xs:element name="OdatosBasicosCl" type="tns:OdatosBasicosCl"/>
+
+  <xs:element name="OdatosCuotaRecomendadas" type="tns:OdatosCuotaRecomendadas"/>
+
+  <xs:element name="OdatosDeuda" type="tns:OdatosDeuda"/>
+
+  <xs:element name="OdatosDeudaCl" type="tns:OdatosDeudaCl"/>
+
+  <xs:element name="OdatosIndicadores" type="tns:OdatosIndicadores"/>
+
+  <xs:element name="OdatosIndicadoresCl" type="tns:OdatosIndicadoresCl"/>
+
+  <xs:element name="OdatosInformPatrimonialAdic" type="tns:OdatosInformPatrimonialAdic"/>
+
+  <xs:element name="OdatosIngresos" type="tns:OdatosIngresos"/>
+
+  <xs:element name="OdatosInmueble" type="tns:OdatosInmueble"/>
+
+  <xs:element name="OdatosMontoAsistRapida" type="tns:OdatosMontoAsistRapida"/>
+
+  <xs:element name="OdatosMontoFinalCl" type="tns:OdatosMontoFinalCl"/>
+
+  <xs:element name="OdatosMontoMaxScoring" type="tns:OdatosMontoMaxScoring"/>
+
+  <xs:element name="OdatosMontosFinales" type="tns:OdatosMontosFinales"/>
+
+  <xs:element name="OdatosResultados" type="tns:OdatosResultados"/>
+
+  <xs:element name="OdatosTopes" type="tns:OdatosTopes"/>
+
+  <xs:element name="OdatosTopesCl" type="tns:OdatosTopesCl"/>
+
+  <xs:element name="OdatosVentas" type="tns:OdatosVentas"/>
+
+  <xs:element name="SegundoFiltroFil" type="tns:SegundoFiltroFil"/>
+
+  <xs:element name="SegundoFiltroRes" type="tns:SegundoFiltroRes"/>
+
+  <xs:element name="SegundoFiltroRet" type="tns:SegundoFiltroRet"/>
+
+  <xs:element name="execute" type="tns:execute"/>
+
+  <xs:element name="executeResponse" type="tns:executeResponse"/>
+
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="requestConnection" type="tns:requestConnection"/>
+      <xs:element minOccurs="0" name="segundoFiltroFil" type="tns:SegundoFiltroFil"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestConnection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applicationID" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="sessionID" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SegundoFiltroFil">
+    <xs:sequence>
+      <xs:element name="ifSolicitud" nillable="true" type="xs:string"/>
+      <xs:element name="inCalificacion" nillable="true" type="xs:int"/>
+      <xs:element name="idCalificacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inEvaluacion" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idAplicacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icScoreConsiderar" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="inMaxScoreAvalHit" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idResultadoEvaluacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idNivelAutorizante" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="imDeudaPrevisional" nillable="true" type="xs:string"/>
+      <xs:element name="ikEntidades" nillable="true" type="xs:int"/>
+      <xs:element name="ikIntegrantes" nillable="true" type="xs:int"/>
+      <xs:element name="ikAdicionalTexto" nillable="true" type="xs:int"/>
+      <xs:element name="ikAdicionalNum" nillable="true" type="xs:int"/>
+      <xs:element name="ikLineas" nillable="true" type="xs:int"/>
+      <xs:element name="ikSublineas" nillable="true" type="xs:int"/>
+      <xs:element name="ikReservaTexto" nillable="true" type="xs:int"/>
+      <xs:element name="ikReservaNum" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="iArrayAdicionalTexto" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayAdicionalTexto" nillable="true" type="tns:IarrayAdicionalTexto"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iArrayAdicionalNum" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayAdicionalNum" nillable="true" type="tns:IarrayAdicionalNum"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iArrayEntidades" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayEntidades" nillable="true" type="tns:IarrayPrevaluacion"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iArrayIntegrantes" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayIntegrantes" nillable="true" type="tns:IarrayIntegrantes"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iDatosTitular" nillable="true" type="tns:IdatosTitular"/>
+      <xs:element minOccurs="0" name="iDatosSolicitudCalif" nillable="true" type="tns:IdatosSolicitudCalif"/>
+      <xs:element minOccurs="0" name="iDatosGrupoRiesgo" nillable="true" type="tns:IdatosGrupoRiesgo"/>
+      <xs:element minOccurs="0" name="iArrayLineas" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayLineas" nillable="true" type="tns:IarrayLineas"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iArraySublineas" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArraySublineas" nillable="true" type="tns:IarraySublineas"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iDatosDeudaRiesgo" nillable="true" type="tns:IdatosDeudaRiesgo"/>
+      <xs:element minOccurs="0" name="iDatosBasicos" nillable="true" type="tns:IdatosBasicos"/>
+      <xs:element minOccurs="0" name="iDatosEeCcMmBb" nillable="true" type="tns:IdatosEeCcMmBb"/>
+      <xs:element minOccurs="0" name="iDatosEeCc" nillable="true" type="tns:IdatosEeCc"/>
+      <xs:element minOccurs="0" name="iDatosCuadroResultados" nillable="true" type="tns:IdatosCuadroResultados"/>
+      <xs:element minOccurs="0" name="iDatosVentas" nillable="true" type="tns:IdatosVentas"/>
+      <xs:element minOccurs="0" name="iDatosDeudas" nillable="true" type="tns:IdatosDeudas"/>
+      <xs:element minOccurs="0" name="iArrayReservaNum" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayReservaNum" nillable="true" type="tns:IarrayReservaNum"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iArrayReservaTexto" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayReservaTexto" nillable="true" type="tns:IarrayReservaTexto"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayAdicionalTexto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idAdicional" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayAdicionalNum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inAdicional" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayPrevaluacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="icEntidad" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiDeuda" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="idSituacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayIntegrantes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="icTipoDocumento" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inDocumento" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="icTipoTributario" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inTributario" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idSexo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icTipoRol" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inScore" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="inPoblacion" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idIncomePredictor" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icTipoCliente" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiSumaCuotaSinGtiaBureau" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiSumaCuotaGtiaPrendaria" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiSumaCuotaGtiaHipoBureau" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiSumaPagoMinBureau" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiSumaSaldoPromCcBureau" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiDeudaTotalBcra" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiDeudaBcraOtrasEntidades" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ifRegistroBcra" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiDeudaCortoPlazo" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="idEstado" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idMotivoRechazo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idTitularidadInmuebles" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosTitular">
+    <xs:sequence>
+      <xs:element name="idNombreTitular" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inIdentidadNoValidada" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="ifNacimiento" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idTipoSocietario" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idRegion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inSituacionLaboral" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idCategoriaLaboral" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiResumenVentasUltAnio" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="idPeorSituacionBcraActual" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiDeudaBcraActual" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ifBcraActual" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ifUltimoMesVtaInformado" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ikPeriodosVentaMayor0" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="iiVentaBalance" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiVentasDdJj" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiResultado" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ifVigenciaAutonomo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icActividadAfip" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idActividadAfip" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idCategoriaMonotributo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="inAntiguedadMonotributo" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="idVigenciaA" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ifUltPagoMonotributo" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosSolicitudCalif">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inSolicitudCobis" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="idMetodo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idProvincia" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosGrupoRiesgo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inGrupoRiesgo" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="inExposicion" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayLineas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="icLinea" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiSolicitado" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarraySublineas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="icSublinea" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiSublinea" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icTipoTasa" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iPtasa" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ikPlazo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icTipoBien" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icDestino" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idTasacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosDeudaRiesgo">
+    <xs:sequence>
+      <xs:element name="ikLineasDr" nillable="true" type="xs:int"/>
+      <xs:element name="ikSublineasDr" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="iArrayLineasDr" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArrayLineasDr" nillable="true" type="tns:IarrayLineasDr"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="iArraySublineasDr" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="iArraySublineasDr" nillable="true" type="tns:IarraySublineasDr"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayLineasDr">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="icLineaDr" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idCalificado" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icMoneda" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiDeudaMargenExcepcion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarraySublineasDr">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="icSublineaDr" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idCalificado" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icMoneda" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiDeudaMargenExcepcion" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosBasicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTipoResponsableAfip" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idCategoriaMonotributo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idActividadMonotributo" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idActividad" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icTipoCliente" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ifInicioActividad" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idCalificacionExpress" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="imDeudaPrevisional" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="imMedioRegularizacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="imConvenio" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="icSector" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ifConstitucion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ikPlazo" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="ifVinculacion" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosEeCcMmBb">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="imTipoInformacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ifInformacion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="imCertificado" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiCuentasParticularesCp" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiActivoCorriente" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="imCuentasParticularesLp" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiActivoNoCorriente" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiActivoTotal" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiPasivoCorriente" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiPasivoNoCorriente" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiPasivoTotal" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiPatrimonioNeto" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosEeCc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="iiVentas" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiResultadoFinal" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiResultadoFinalAnterior" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosCuadroResultados">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ifCuadroResultados" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="idFuente" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiIngresosAnuales" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiRedoNetoImpositivo" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiIngresosSecMensuales" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiIngresosAnualesAnterior" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiRdoNetoImpositivoAnterior" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ifUltimoAnioFiscalMonotr" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiIngresosAnualesMonotr" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiUtilidadEstimadaMonotr" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiIngresosSecMensualesMonotr" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosVentas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ifVenta" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ikMeses" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="imAlicuotaDiferenciada" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="iiTotalVentasDeclaradas12" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiTotalVentasImpositivas12" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiTotalVentasAl21" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiTotalVentasAl105" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiVentasExcentas12" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiTotalVentasExportaciones12" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IdatosDeudas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="iiCompromisoAcuerdos" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiCompromisoTcConsumo" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiCompromisoPrestHipComercial" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiCompromisoPrestPrendario" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiCompromisoPrestHipPersonal" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiCompromisoPrestPersonal" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="iiMarcaAtrasosUlt6Meses" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="ikMaximoDiasAtraso" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayReservaNum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inReservaNum" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IarrayReservaTexto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idReservaTexto" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="executeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:SegundoFiltroRes"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SegundoFiltroRes">
+    <xs:sequence>
+      <xs:element name="serviceError" nillable="true" type="tns:serviceError"/>
+      <xs:element name="segundoFiltroRet" nillable="true" type="tns:SegundoFiltroRet"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:long"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SegundoFiltroRet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ofSolicitud" type="xs:string"/>
+      <xs:element minOccurs="0" name="onCalificacion" type="xs:int"/>
+      <xs:element minOccurs="0" name="odCalificacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="onEvaluacion" type="xs:int"/>
+      <xs:element minOccurs="0" name="oDatosAfectaciones" type="tns:OdatosAfectaciones"/>
+      <xs:element minOccurs="0" name="oDatosCuotasRecomendadas" type="tns:OdatosCuotaRecomendadas"/>
+      <xs:element minOccurs="0" name="oDatosBasicos" type="tns:OdatosBasicos"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="oArrayAdicionalTexto" nillable="true" type="tns:OarrayAdicionalTexto"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="oArrayAdicionalNum" nillable="true" type="tns:OarrayAdicionalNum"/>
+      <xs:element minOccurs="0" name="oDatosDeuda" type="tns:OdatosDeuda"/>
+      <xs:element minOccurs="0" name="oDatosIndicadores" type="tns:OdatosIndicadores"/>
+      <xs:element minOccurs="0" name="oDatosIngresos" type="tns:OdatosIngresos"/>
+      <xs:element minOccurs="0" name="oDatosMontosFinales" type="tns:OdatosMontosFinales"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="oArrayMontosRecomendados" nillable="true" type="tns:OarrayMontosRecomendados"/>
+      <xs:element minOccurs="0" name="oDatosResultados" type="tns:OdatosResultados"/>
+      <xs:element minOccurs="0" name="oDatosTopes" type="tns:OdatosTopes"/>
+      <xs:element minOccurs="0" name="oDatosBasicosCl" type="tns:OdatosBasicosCl"/>
+      <xs:element minOccurs="0" name="oDatosInformPatrimonialAdic" type="tns:OdatosInformPatrimonialAdic"/>
+      <xs:element minOccurs="0" name="oDatosVentas" type="tns:OdatosVentas"/>
+      <xs:element minOccurs="0" name="oDatosDeudaCl" type="tns:OdatosDeudaCl"/>
+      <xs:element minOccurs="0" name="oDatosInmueble" type="tns:OdatosInmueble"/>
+      <xs:element minOccurs="0" name="oDatosIndicadoresCl" type="tns:OdatosIndicadoresCl"/>
+      <xs:element minOccurs="0" name="oDatosAfectacionesCl" type="tns:OdatosAfectacionesCl"/>
+      <xs:element minOccurs="0" name="oDatosTopesCl" type="tns:OdatosTopesCl"/>
+      <xs:element minOccurs="0" name="oDatosMontoAsistRapida" type="tns:OdatosMontoAsistRapida"/>
+      <xs:element minOccurs="0" name="oDatosMontoMaxScoring" type="tns:OdatosMontoMaxScoring"/>
+      <xs:element minOccurs="0" name="oDatosMontoFinalCl" type="tns:OdatosMontoFinalCl"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosAfectaciones">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiAfectacionAdicDisponible" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectacionAdicDispUva" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectacionIngrComputableNeto" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiEscenarioAfectacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectAdicDisponible" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectAdicionalDispUva" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectLeasing" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectLeasingRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPhCom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPhComRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPhPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPhPersonalRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPpRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectPrendario" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaDispPrendLeasingComRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectTcConsumo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoMinTcRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opAfectLeasingRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opAfectPhComercialRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opAfectPhPersonalRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opAfectPpRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opAfectPrendarioRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opAfectTcConsumoRecom" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosCuotaRecomendadas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiCuotaFinalPhComRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPrendRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalLeasingRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPhPersonalRecom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPpRecom" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosBasicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="onAntiguedadNegocio" type="xs:int"/>
+      <xs:element minOccurs="0" name="odPropietario" type="xs:string"/>
+      <xs:element minOccurs="0" name="onEdad" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OarrayAdicionalTexto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="odAdicional" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OarrayAdicionalNum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="onAdicional" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosDeuda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiCompTitularBureau" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDeudaBcraOtrasEnt" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDeudaBcraTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDeudaSfGrupoFinal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMaxEndeudamientoCom" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosIndicadores">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiApalancamiento" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRelDeudaBcraPatrimonio" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRelDeudaCortoPlazoVenta" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRelDeudaBcraTotalVenta" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiVentaAnualComputable" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosIngresos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiIngreso" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiIngresoComputable" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiIngresoComputableNeto" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiIngresoEstimadoTitular" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiIngresoMonotributo" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosMontosFinales">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiCuotaFinalLeasing" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPh" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPhPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalPrendario" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaFinalSolaFirmaLp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalLeasing" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPhCom" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPhPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPrendario" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalCpd" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPagoCupon" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalR2448" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalSolaFirmaLp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalSolaFirma" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalTc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoMinTeoricoTc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSublimiteTcFinal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSublimTcRecomendado" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OarrayMontosRecomendados">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oClineaSublinea" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="oiMontoRecomendado" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosResultados">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="odEvaluacionRegla2doFiltro" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="odEvaluacionFinal" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="odNivelAutorizante" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="omAsistRapida" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosTopes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiTopeEndeudGlobalInterno" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTopeEndeudLimiteInterno" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoProdConsumoVentas" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosBasicosCl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="odPropietario" type="xs:string"/>
+      <xs:element minOccurs="0" name="onVencimContratoSocial" type="xs:int"/>
+      <xs:element minOccurs="0" name="odSector" type="xs:string"/>
+      <xs:element minOccurs="0" name="oKaniosCliente" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="odMarcaCondSfPlus" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosInformPatrimonialAdic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="opMargenNetoAnteriorMmBb" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opMargenNetoMmBb" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDeudaFinancTotalMmBb" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDeudaFiscalTotalMmBb" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosVentas">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="oArrayVentasPostCierreMes" nillable="true" type="tns:OarrayVentasPostCierreMes"/>
+      <xs:element minOccurs="0" name="oiVentasPostCierreTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiVentasPostCierreProm" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiVarVtasPostCierreBalance" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="odVerifDesvio10P" type="xs:string"/>
+      <xs:element minOccurs="0" name="oiVarVtasPostCierrePerHomog" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiVtasUlt12MesesReal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiVtasUlt12MesesCalcLineas" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OarrayVentasPostCierreMes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiVentasPostCierreMes" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosDeudaCl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiRelacDeudaCpVenta" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiVarDeudaTotDeclarEeCcMmBb" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiGeneracionProyectada" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRelCompromisoGenProyec" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCompromisoTitularBureau" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosInmueble">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="oArrayValorLibre" nillable="true" type="tns:OarrayValorLibre"/>
+      <xs:element minOccurs="0" name="oiTotalInmuebleLibre" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTotalInmLibresTitular" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTotalInmLibreFiadoreOtros" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTotalInmValPondTitular" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTotalInmPondFiadorOtros" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OarrayValorLibre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiValorLibreInmueble" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosIndicadoresCl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="onIndScoreVerazTitular" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="odIindCalidadInformacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="onIndAniosActividad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndInmPropios" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndValInmLibrePropAval" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndLiquidezCte" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndEndeudamiento" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndUtilVentaUltEj" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndUtilVentasEjAnt" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opIndEvolVentasEj" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="opIndEvolVtasPostHomog" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndTotVtasUlt12m" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndDsBancFinanCpPost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndDsBancFinanPost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndDsBancFinanCpVtasUtl12m" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndDsBancFinanPn" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="onIndApalacPonderado" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosAfectacionesCl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiAfectacionIngrComputableNeto" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectIngresoCompNetoUva" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectacionAdicDisponible" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectAdicDisponible" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectacionAdicDispUva" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectAdicionalDispUva" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectDispPhPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiAfectDisponiblePp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoAfectacionTc" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosTopesCl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiTopeEndeudGlobalInterno" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTopeEndeudLimiteInterno" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTopeEndeudHipoInterno" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTopeEndeudHipoInternoUva" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTopeEndeudPpInterno" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTopeLtv" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMaxComercialLp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoProdConsumoVentas" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosMontoAsistRapida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiSolaFirma" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfAdelantoCuenta" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfAcuerdoCtaCte" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrestamoAmortizable" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfFinancExportacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrefinancExportacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfCartaCredImportacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfFinancImportacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfTarjetaCredito" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrestLocalExport" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfLinCredInverProduct" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrestConsumoLp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDescuentoCheque" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDescCheques" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRiesgo2448H" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRiesgo2448Horas" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoExpresoCupoTc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoExpresoCuponesTc" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosMontoMaxScoring">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiSolaFirma" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfAdelantoCta" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfAcuerdoCtaCte" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrestAmortizable" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfGarantOtorgada" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfOperPmosSepymes" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfFinancExportacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrefinancExport" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfCartaCredImport" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfAvanLetra" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfFinancImport" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfTarjetaCredito" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrestLocalExport" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfFinancProductor" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfCampoXxiPagoInt" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfCampoXxiAmort" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfLinCredInverProduc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSfPrestConsumoLp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDescuentoCheque" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiDescCheques" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRiesgo2448H" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiRiesgo2448Horas" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoExpresoCupoTc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoExpresoCuponesTc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiLeasing" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiLeasingBienLocFinan" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiLeasingLinCredInverProduc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestGarantPrend" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestGarantPrendaria" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestGarantLinCredInvProd" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipotecario" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipAdelCta" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipoGarantHipot" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipoVivienda" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipoTarjCred" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipoPacGarantHip" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrestHipoLinCredInvProd" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTarjetaCredito" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiTarjCred" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrendarioUsado" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPrendUsaPrestGar" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdatosMontoFinalCl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oiMontoFinalSolaFirmaAr" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPrestSfLpAr" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiSublimTarjCredFinalAr" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalR2448Ar" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalCpdAr" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiPagoExpressCupFinalAr" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalSf" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalSfCp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalSffLp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalSfSublimTc" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalR2448" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalCpd" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPagoCupon" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPh" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPrendNuevo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalLeasing" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPrendUsado" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalPhPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaPhPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMmontoFinalPp" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiCuotaPrestPersonal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="oiMontoFinalTc" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

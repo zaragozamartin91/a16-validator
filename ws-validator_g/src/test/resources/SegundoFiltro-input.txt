@@ -1,0 +1,629 @@
+	Input
+	parámetro	tipo	Req	Descripción
+1	IfSolicitud	Fecha	S	Fecha de Solicitud
+2	InCalificacion	Numérico	S	Nro de calificación
+3	IdCalificacion	Texto	S	Nombre de calificación
+4	InEvaluacion	Numérico		Nro de evaluación
+5	IdAplicacion	Texto		Aplicación
+6	IcScoreConsiderar	Numérico		score_a_considerar
+7	InMaxScoreAvalHit	Numérico		max_score_aval_hit 
+8	IdResultadoEvaluacion	Texto		Resultado de la evaluación (Con Observaciones ó Sin Observaciones)
+9	IdNivelAutorizante	Texto		Nivel autorizante (Quién lo aprobará)
+10	ImDeudaPrevisional	Texto		Deuda Previsional (SI, NO)
+	IkEntidades	Número	S	Fijo  “10”
+	IkIntegrantes	Número	S	Fijo “5”
+	IkAdicionalTexto	Número	S	Fijo “10”
+	IkAdicionalNum	Número	S	Fijo “10”
+	IkLineas	Número	S	Fijo “15”
+	IkSublineas	Número	S	Fijo “70”
+	IkReservaTexto	Número	S	Fijo “12”
+	IkReservaNum	Número	S	Fijo “48”
+	IkLineasDR	Número	S	Fijo “15”
+	IkSublineasDR	Número	S	Fijo “30”
+	iArrayAdicionalTexto	iArrayAdicionalTexto		Lista  de datos adicionales de texto. Máximo 10.
+	iArrayAdicionalNum	iArrayAdicionalNum		Lista  de datos adicionales numérico. Máximo 10.
+	iArrayEntidades	iArrayEntidades		Lista de entidades. Máximo 10.
+	iArrayIntegrantes	iArrayIntegrantes		Lista de Integrantes. Máximo 5.
+	iDatosTitular	iDatosTitular		Agrupa los datos del titular
+	iDatosSolicitudCalif	iDatosSolicitudCalif		Agrupa los datos de solicitud de calificación
+	iDatosGrupoRiesgo	iDatosGrupoRiesgo		Agrupa los datos de Grupo Riesgo
+	iArrayLineas	iArrayLineas		Lista de líneas. Máximo 15.
+	iArraySublineas	iArraySublineas		Lista de sublíneas. Máximo 70.
+	iArrayLineasDR	iArrayLineasDR		Lista de líneas. Máximo 15.
+	iArraySublineasDR	iArraySublineasDR		Lista de sublineas. Máximo 30.
+	iDatosDeudaRiesgo	iDatosDeudaRiesgo		Agrupa dos listas, una de líneas y otra de sublineas
+	iDatosBasicos	iDatosBasicos		Agrupa los datos básicos
+	iDatosEECCMMBB	iDatosEECCMMBB		Agrupa los datos de EECC y MMBB
+	iDatosEECC	iDatosEECC		Agrupa los datos de EECC
+	iDatosCuadroResultados	iDatosCuadroResultados		Agrupa los datos del Cuadro de Resultados
+	iDatosVentas	iDatosVentas		Agrupa datos de Ventas
+	iDatosDeudas	iDatosDeudas		Agrupa datos de Deudas
+	iArrayReservaNum	iArrayReservaNum		Lista de Reserva de datos numéricos. Máximo 48.
+	iArrayReservaTexto	iArrayReservaTexto		Lista de Reserva de datos de texto. Máximo 12.
+
+
+	iArrayAdicionalTexto  (Máximo 10)
+	parámetro	tipo	Req.	Descripción
+11	IdAdicional	String	N	Reserva campo texto
+
+	iArrayAdicionalNum  (Máximo 10)
+	parámetro	tipo	Req.	Descripción
+21	InAdicional	Decimal	N	Reserva campo numérico
+
+
+
+	iArrayIntegrantes (Máximo 5)
+	parámetro	tipo	Req.	Descripción
+31	IcTipoDocumento	Texto		Tipo de documento
+32	InDocumento	Numérico		Número de Documento
+33	IcTipoTributario	Texto		Tipo Doc Tributario 
+34	InTributario	Número		CUIL/CUIT 
+35	IdSexo	Texto		Sexo
+36	IcTipoRol	Texto		Tipo de integrante (T,A,NA)
+37	InScore	Numérico		Score del Consultado
+38	InPoblacion	Numérico		Población Consultado
+39	IdIncomePredictor	Texto		Income Predictor 
+40	IcTipoCliente	Texto		Tipo de Cliente
+41	IiSumaCuotaSinGtiaBureau	Money		Suma de cuotas de préstamos sin garantía del bureau (sin Macro)
+42	IiSumaCuotaGtiaPrendaria	Money		Suma de cuotas de préstamos con garantía prendaria (sin Macro)
+43	IiSumaCuotaGtiaHipoBureau	Money		Suma de cuotas de préstamos con garantía hipotecaria en bureau (sin Macro)
+44	IiSumaPagoMinBureau	Money		Sumatoria pagos min bureau (sin Macro)
+45	IiSumaSaldoPromCCBureau	Money		sumatoria de saldos promedio de ctas ctes bureau (sin Macro)
+46	IiDeudaTotalBcra	Money		Deuda BCRA Total (incluido Macro) 
+47	IiDeudaBcraOtrasEntidades	Money		Deuda BCRA Otras Entidades 
+48	IfRegistroBcra	Texto		Fecha más reciente de los registros de BCRA
+49	IiDeudaCortoPlazo	Money		Deuda Corto Plazo Inicial
+50	IdEstado	Texto		Estado
+51	IdMotivoRechazo	Texto		Motivos de rechazo
+52	IdTitularidadInmuebles	Texto		Titularidad Inmuebles
+
+
+	iDatosTitular
+	parámetro	tipo	Req.	Descripción
+141	IdNombreTitular	Texto	S	Apellido y nombre o Razón social del Titular
+142	InIdentidadNoValidada	Numérico		Marca Identidad no validada del Titular
+143	IfNacimiento	Texto		Fecha de Nacimiento - TITULAR
+144	IdTipoSocietario	Texto		Tipo Societario - TITULAR
+145	IdRegion	Texto		Región (Titular)
+146	InSituacionLaboral	Numérico		Situación Laboral de una Persona
+147	IdCategoriaLaboral	Texto		Categoría Laboral
+148	IiResumenVentasUltAnio	Money		Resumen de Ventas último año
+149	IdPeorSituacionBcraActual	Texto		Peor Sit. BCRA actual
+150	IiDeudaBcraActual	Money		Monto de Deuda BCRA actual
+151	IfBcraActual	Texto		Fecha BCRA actual
+152	IfUltimoMesVtaInformado	Texto		Fecha Ultimo mes de venta informado
+153	IkPeriodosVentaMayor0	Numérico		Cantidad de Periodos con venta >0
+154	IiVentaBalance	Money		Ventas de Balance 
+155	IiVentasDDJJ	Money		Ventas por DDJJ
+156	IiResultado	Money		Resultado para PJ
+157	IfVigenciaAutonomo	Texto		Vigencia de Autónomos
+158	IcActividadAfip	Numérico		Código de la Actividad de AFIP
+159	IdActividadAfip	Texto		Descripción de la actividad AFIP
+160	IdCategoriaMonotributo	Texto		Categoría del Monotributo en función a los Aportes
+161	InAntiguedadMonotributo	Decimal		Antigüedad del Monotributo
+162	IdVigenciaA	Texto		Vigencia de Autónomos
+163	IfUltPagoMonotributo	Fecha		Fecha último pago Monotributo
+
+
+	iArrayEntidades  (Máximo 10)
+	parámetro	tipo	Req.	Descripción
+164	IcEntidad	Texto		Banco 1 (Banco Macro según definición funcional)
+165	IiDeuda	Decimal		Deuda Banco 1 (Banco Macro según definición funcional)
+166	IdSituacion	Texto		Situación Banco 1 (Banco Macro según definición funcional)
+
+	iDatosSolicitudCalif
+	parámetro	tipo	Req.	Descripción
+194	InSolicitudCobis	Numérico		ID Cobis - Titular
+195	IdMetodo	Texto		Método de Calificación
+196	IdProvincia	Texto		Provincia
+
+	iDatosGrupoRiesgo
+	parámetro	tipo	Req.	Descripción
+197	InGrupoRiesgo	Numérico		Nro. Grupo 
+198	InExposicion	Decimal		Exposición Sola Firma Grupo de Riesgo
+
+
+	iArrayLineas (Máximo 15)
+	parámetro	tipo	Req.	Descripción
+199	IcLinea	Texto		Código 
+200	IiSolicitado	Decimal		Monto Solicitado 
+
+	iArraySublineas (Máximo 70)
+	parámetro	tipo	Req.	Descripción
+229	IcSublinea	Texto		Código padre y código 
+230	IiSublinea	Texto		Monto
+231	IcTipoTasa	Texto		Tipo Tasa
+232	iPTasa	Texto		Tasa
+233	IkPlazo	Texto		Plazo
+234	IcTipoBien	Texto		Tipo Bien
+235	IcDestino	Texto		Destino
+236	IdTasacion	Texto		Tasación
+
+	iArrayLineasDR (Máximo 15)
+	parámetro	tipo	Req.	Descripción
+369	IcLineaDR	Texto		Línea
+370	IdCalificado	Texto		Calificado
+371	IcMoneda	Texto		Moneda
+372	IiDeudaMargenExcepcion	Texto		Deuda margen propio + Deuda por Excepción
+
+	iArraySublineasDR (Máximo 30)
+	parámetro	tipo	Req.	Descripción
+399	IcSublineaDR	Texto		Sublínea
+400	IdCalificado	Texto		Calificado
+401	IcMoneda	Texto		Moneda
+402	IiDeudaMargenExcepcion	Money		Deuda margen propio + Deuda por Excepción
+
+	iDatosBasicos
+	parámetro	tipo	Req.	Descripción
+459	IdTipoResponsableAfip	Texto		Insc. AFIP
+460	IdCategoriaMonotributo	Texto		Categoría Monotributo
+461	IdActividadMonotributo	Texto		Actividad Monotributo
+462	IdActividad	Texto		Actividad
+463	IcTipoCliente	Texto		Tipo Cliente
+464	IfInicioActividad	Texto		Inicio Actividades 
+465	IdCalificacionExpress	Texto		Calificación Express 
+(Solo camino corto)
+466	ImDeudaPrevisional	Texto		Deuda Previsional Regularizada (SI, NO)
+467	ImMedioRegularizacion	Texto		Medio de Regularización (Pago, Convenio)
+SI / NO
+468	ImConvenio	Texto		Número de Convenio
+SI / NO
+463	IcSector	Texto		Sector (Solo Camino Largo)
+466	IfConstitucion	Fecha		Fecha de Constitución (Solo Camino Largo)
+467	IkPlazo	Número		Plazo de Duración (Solo Camino Largo)
+468	IfVinculacion	Fecha		Fecha de vinculación (Solo Camino Largo)
+
+
+	iDatosEECCMMBB
+	parámetro	tipo	Req.	Descripción
+469	ImTipoInformacion	Texto		Marca de Tipo de Información (EECC/MMBB)
+470	IfInformacion	Texto		Fecha
+471	ImCertificado	Texto		Certificado
+SI / NO
+472	IiCuentasParticularesCP	Money		Cuentas Particulares CP
+473	IiActivoCorriente	Money		Activo Corriente
+474	ImCuentasParticularesLP	Money		Cuentas Particulares LP
+475	IiActivoNoCorriente	Money		Activo No Corriente
+476	IiActivoTotal	Money		Activo Total
+477	IiPasivoCorriente	Money		Pasivo Corriente
+478	IiPasivoNoCorriente	Money		Pasivo No Corriente
+479	IiPasivoTotal	Money		Pasivo Total
+480	IiPatrimonioNeto	Money		Patrimonio Neto
+
+	iDatosEECC
+	parámetro	tipo	Req.	Descripción
+481	IiVentas	Money		Ventas
+482	IiResultadoFinal	Money		Resultado Final
+483	IiResultadoFinalAnterior	Money		Resultado Final Ejercicio Anterior
+
+
+	iDatosCuadroResultados
+	parámetro	tipo	Req.	Descripción
+484	IfCuadroResultados	Texto		Fecha
+485	IdFuente	Texto		Fuente
+486	IiIngresosAnuales	Money		Ingresos Anuales
+487	IiRedoNetoImpositivo	Money		Rdo. Neto Impositivo
+488	IiIngresosSecMensuales	Money		Ingresos Secundarios Mensuales
+489	IiIngresosAnualesAnterior	Money		Ingresos Anuales Ejercicio Anterior
+490	IiRdoNetoImpositivoAnterior	Money		Rdo. Neto Impositivo Ejercicio Anterior
+491	IfUltimoAnioFiscalMonotr	Texto		Fecha Ult. Año Fiscal (Monotributo)
+492	IiIngresosAnualesMonotr	Money		Ingresos Anuales (Monotributo)
+493	IiUtilidadEstimadaMonotr	Money		Utilidad Estimada (Monotributo)
+494	IiIngresosSecMensualesMonotr	Money		Ingresos Secundarios Mensuales (Monotributo)
+
+	iDatosVentas
+	parámetro	tipo	Req.	Descripción
+495	IfVenta	Fecha		Fecha de Ventas
+496	IkMeses	Numérico		Cantidad de Meses
+497	ImAlicuotaDiferenciada	Texto		Alícuota Diferenciada
+SI / NO
+498	IiTotalVentasDeclaradas12	Money		Total Ventas Declaradas (suma de los 12 meses)
+499	IiTotalVentasImpositivas12	Money		Total Ventas Impositivas (suma de los 12 meses)
+500	IiTotalVentasAl21	Money		Total Ventas al 21% (suma de los 12 meses)
+501	IiTotalVentasAl105	Money		Total Ventas al 10.5% (suma de los 12 meses)
+502	IiVentasExcentas12	Money		Total Ventas Exentas (suma de los 12 meses)
+503	IiTotalVentasExportaciones12	Money		Total Ventas Exportaciones (suma de los 12 meses)
+
+
+	iDatosDeudas
+	parámetro	tipo	Req.	Descripción
+504	IiCompromisoAcuerdos	Money		Compromiso - Acuerdos 
+505	IiCompromisoTCConsumo	Money		Compromiso - TC Consumo 
+506	IiCompromisoPrestHipComercial	Money		Compromiso - Préstamo Hipotecario Comercial 
+507	IiCompromisoPrestPrendario	Money		Compromiso - Préstamo Prendario / Leasing 
+508	IiCompromisoPrestHipPersonal	Money		Compromiso - Préstamo Hipotecario Personal 
+509	IiCompromisoPrestPersonal	Money		Compromiso - Préstamo Personal 
+510	IiMarcaAtrasosUlt6Meses	Money		Marca Atrasos enlos últimos 6 Meses
+511	IkMaximoDiasAtraso	Númerico		Máximo Días de Atraso (0 a Máximo)
+	
+	iArrayReservaNum (Máximo 48)
+	parámetro	tipo	Req.	Descripción
+512	InReservaNum	Decimal		Reserva campo numérico
+
+	iArrayReservaTexto (Máximo 12)
+	parámetro	tipo	Req.	Descripción
+560	IdReservaTexto	Texto		Reserva campo texto
+
+
+	Output
+	parámetro	Tipo	Descripción
+1	OfSolicitud	Texto	Fecha de Solicitud
+2	OnCalificacion	Numérico	Nro de calificación
+3	OdCalificacion	Texto	Nombre de calificación
+4	OnEvaluacion	Numérico	Nro de evaluación
+	oDatosAfectaciones	oDatosAfectaciones	Agrupa Datos de Afectaciones (Solo camino corto)
+	oDatosCuotasRecomendadas	oDatosCuotasRecomendadas	Agrupa Datos de Cuotas Recomendadas
+	oDatosBasicos	oDatosBasicos	Agrupa Datos Básicos (Solo camino corto)
+	oArrayAdicionalTexto	oArrayAdicionalTexto	Lista de datos Adicionales de Texto. Máximo 15.
+	oArrayAdicionalNum	oArrayAdicionalNum	Lista de datos Adicionales Numéricos. Máximo 30.
+	oDatosDeuda	oDatosDeuda	Agrupa datos de Deuda (Solo camino corto)
+	oDatosIndicadores	oDatosIndicadores	Agrupa datos de inidicadores
+	oDatosIngresos	oDatosIngresos	Agrupa datos de ingresos
+	oDatosMontosFinales	oDatosMontosFinales	Agrupa datos de montos finales. (Solo camino corto)
+	oArrayMontosRecomendados	oArrayMontosRecomendados	Lista de montos recomendados. Máximo 30
+	oDatosResultados	oDatosResultados	Agrupa datos de resultados
+	oDatosTopes	oDatosTopes	Agrupa datos de topes. (Solo camino corto)
+	oDatosBasicosCL	oDatosBasicosCL	Agrupa datos básicos. (Solo Camino Largo)
+	oDatosInformPatrimonialAdic	oDatosInformPatrimonialAdic	Agrupa datos de información patrimonial adicional. (Solo camino Largo)
+	oDatosVentas	oDatosVentas	Agrupa datos de ventas. (Solo camino Largo)
+	oDatosDeudaCL	oDatosDeudasCL	Agrupa datos de deudas. (Solo camino Largo)
+	oDatosInmueble	oDatosInmueble	Agrupa datos Inmueble. (Solo camino Largo)
+	oDatosIndicadoresCL	oDatosIndicadoresCL	Agrupa datos de Indicadores. (Solo camino Largo)
+	oDatosIngresosCL	oDatosIngresosCl	Agrupa datos de ingresos
+	oDatosAfectacionesCL	oDatosAfectacionesCL	Agrupa Datos de Afectaciones. (Solo camino Largo)
+	oDatosTopesCL	oDatosTopesCL	Agrupa datos de topes. (Solo camino Largo)
+	oDatosMontoAsistRapida
+
+oArrayMontoAsistRapida	oArrayMontoAsistRapida	Lista los montos de asistencia rápida. (Solo camino Largo)
+	oDatosMontoMaxScoring
+
+oArrayMontoMaxScoring	oArrayMontoMaxScoring	Lista los montos máximos Scoring. (Solo camino Largo)
+	oDatosMontoFinalCL	oDatosMontoFinalCL	Agrupa datos de montos finales. . (Solo camino Largo)
+	oDatosResultadosCl	oDatosResultadosCl	Agrupa datos de resultados . (Solo camino Largo)
+	oArrayVentasPostCierreMes	oArrayVentasPostCierreMes	Lista de datos de ventas post cierre mes. (Máximo 12) 
+
+
+	oDatosAfectaciones
+	parámetro	tipo	Descripción
+5	OiAfectacionAdicDisponible	Money	afectación adicional disponible
+6	OiAfectacionAdicDispUva	Money	afectación adicional disponible UVA
+7	OiAfectacionIngrComputableNeto	Money	afectación ingreso computable neto
+8	OiEscenarioAfectacion	Money	Escenario de Afectación
+9	OiMontoAfectAdicDisponible	Money	monto afectación adicional disponible
+10	OiMontoAfectAdicionalDispUva	Money	monto afectación adicional disponible UVA
+11	OiMontoAfectLeasing	Money	Afectación disponible para Leasing
+12	OiMontoAfectLeasingRecom	Money	Cuota pura disponible para Leasing (Recomendado)
+13	OiMontoAfectPhCom	Money	Afectación disponible para PH Com.
+14	OiCuotaDispPhComRecom	Money	Cuota pura disponible para PH Com. (Recomendado)
+15	OiMontoAfectPhPersonal	Money	Afectación disponible para PH Personal
+16	OiMontoAfectPhPersonalRecom	Money	Afectación disponible para PH Personal Recom.
+17	OiMontoAfectPp	Money	Afectación disponible para PP
+18	OiMontoAfectPpRecom	Money	Afectación disponible para PP Recom.
+19	OiMontoAfectPrendario	Money	Afectación disponible para Prendario
+20	OiCuotaDispPrendLeasingComRecom	Money	Cuota pura disponible para Prendario/Leasing Com. (Recomendado)
+21	OiMontoAfectTcConsumo	Money	Afectación Disponible TC Consumo
+22	OiPagoMinTcRecom	Money	pago minimo tarjeta sugerido  (Recomendado)
+23	OpAfectLeasingRecom	Decimal	% Afect. Leasing (Recomendados)
+24	OpAfectPhComercialRecom	Decimal	% Afect. PH Comercial (Recomendados)
+25	OpAfectPhPersonalRecom	Decimal	% Afect. PH Personal (Recomendados)
+26	OpAfectPpRecom	Decimal	% Afect. Préstamo Personal (Recomendados)
+27	OpAfectPrendarioRecom	Decimal	% Afect. Prend (Recomendados)
+28	OpAfectTcConsumoRecom	Decimal	% Afect. Tarjeta Consumo (Recomendados)
+
+
+	oDatosCuotaRecomendadas
+	parámetro	tipo	Descripción
+29	OiCuotaFinalPhComRecom	Money	Cuota Final PH Com. (Recom)
+30	OiCuotaFinalPrendRecom	Money	Cuota Final Prendario (Recom)
+31	OiCuotaFinalLeasingRecom	Money	Cuota Final Leasing (Recom)
+32	OiCuotaFinalPhPersonalRecom	Money	Cuota final PH personal (Recom)
+33	OiCuotaFinalPpRecom	Money	Cuota final PP (Recom)
+
+
+	oDatosBasicos (solo camino corto)
+	parámetro	tipo	Descripción
+34	OnAntiguedadNegocio	Numérico	antigüedad en el negocio 
+35	OdPropietario	Texto	Propietario
+36	OnEdad	Numérico	Edad
+
+
+
+	oArrayAdicionalNum  (Máximo 30)
+	parámetro	tipo	Req.	Descripción
+37	OnAdicional	Decimal	N	Reserva campo numérico
+
+
+
+	oArrayAdicionalTexto  (Máximo 15)
+	parámetro	tipo	Req.	Descripción
+67	OdAdicional	String	N	Reserva campo texto
+
+
+	oDatosDeuda (solo camino corto)
+	parámetro	tipo	Descripción
+82	OiCompTitularBureau	Money	compromiso titu bureau
+83	OiDeudaBcraOtrasEnt 	Money	Deuda BCRA otras entidades 
+84	OiDeudaBcraTotal 	Money	Deuda BCRA total (incluido Macro) 
+85	OiDeudaSfGrupoFinal	Money	Deuda sf grupo final
+86	OiMaxEndeudamientoCom	Money	Máximo Endeudamiento Comercial
+
+
+	oDatosIndicadores (solo camino corto)
+	parámetro	tipo	Descripción
+87	OiApalancamiento	Money	Apalancamiento
+88	OiRelDeudaBcraPatrimonio	Money	Relación Deuda BCRA versus Patrimonio
+89	OiRelDeudaCortoPlazoVenta	Money	Relación Deuda Corto Plazo versus Ventas
+90	OiRelDeudaBcraTotalVenta	Money	Relación Deuda BCRA Total versus Ventas
+91	OiVentaAnualComputable	Money	Ventas anuales computables
+
+
+	oDatosIngresos
+	parámetro	tipo	Descripción
+92	OiIngreso	Money	ingreso
+93	OiIngresoComputable	Money	ingreso computable
+94	OiIngresoComputableNeto	Money	ingreso computable neto
+95	OiIngresoEstimadoTitular	Money	ingreso estimado titu
+96	OiIngresoMonotributo	Money	ingreso_monotributo
+
+
+	oDatosMontosFinales (solo camino corto)
+	parámetro	tipo	Descripción
+97	OiCuotaFinalLeasing	Money	Cuota Final Leasing
+98	OiCuotaFinalPh	Money	Cuota Final Préstamo Hipotecario
+99	OiCuotaFinalPhPersonal	Money	Cuota Final Préstamo Hipotecario Personal
+100	OiCuotaFinalPp	Money	Cuota Final Préstamo Personal
+101	OiCuotaFinalPrendario	Money	Cuota Final Préstamo Prendario
+102	OiCuotaFinalSolaFirmaLP	Money	Cuota Final Préstamo Sola Firma LP
+103	OiMontoFinalLeasing	Money	Monto Final Leasing 
+104	OiMontoFinalPhCom	Money	Monto Final PH Com.
+105	OiMontoFinalPhPersonal	Money	Monto Final PH Personal 
+106	OiMontoFinalPp	Money	Monto Final Prestamo Personal 
+107	OiMontoFinalPrendario	Money	Monto Final Prendario 
+108	OiMontoFinalCpd	Money	Monto CPD Final
+109	OiMontoFinalPagoCupon	Money	Monto Final Pago Express de Cupones
+110	OiMontoFinalR2448	Money	Monto Final R24/48hs
+111	OiMontoFinalSolaFirmaLP	Money	Monto Final Pmo. Sola Firma LP
+112	OiMontoFinalSolaFirma	Money	Monto Final Sola Firma
+113	OiMontoFinalTc	Money	Monto Final Tarjeta de Crédito
+114	OiPagoMinTeoricoTC	Money	Pago Mínimo Teórico Tarjeta de Crédito
+115	OiSublimiteTCFinal	Money	Sublímite Tarjeta de Crédito Final
+116	OiSublimTCRecomendado	Money	Sublímite Tarjeta de Crédito Recomendado
+
+
+	oArrayMontosRecomendados (Máximo 30)
+	parámetro	tipo	Descripción
+117	oCLinea	Texto	Código de línea y sublinea
+118	oCSublinea	Texto	Código de línea y sublinea
+119	OiMontoRecomendado	Texto	Monto Recomendado
+
+	oDatosResultados
+	parámetro	tipo	Descripción
+207	OdEvaluacionRegla2doFiltro	Texto	Evaluación Reglas 2do Filtro
+208	OdEvaluacionFinal	Texto	Evaluación Final
+209	OdNivelAutorizante	Texto	Nivel Autorizante
+
+	oDatosTopes (solo camino corto)
+	parámetro	tipo	Descripción
+210	OiTopeEndeudGlobalInterno	Money	tope endeudamiento global interno
+211	OiTopeEndeudLimiteInterno	Money	tope endeudamiento limite interno
+212	OiMontoProdConsumoVentas	Money	monto productos de consumo por ventas
+
+
+	oDatosBasicosCL (solo camino Largo)
+	parámetro	tipo	Descripción
+	OdPropietario	Texto	Propietario
+	OnVencimContratoSocial	Numérico	Vencimiento del Contrato Social
+	OdSector	Texto	Sector
+	oKAniosCliente	Decimal	Anios de Cliente
+	OdMarcaCondSFPlus	Texto	Marca Condiciones SF Plus 
+
+
+	oDatosInformPatrimonialAdic  (solo camino largo)
+	parámetro	tipo	Descripción
+	OpMargenNetoAnteriorMMBB	Decimal	Porcentaje Margen Neto Anterior (MMBB)
+	OpMargenNetoMMBB	Decimal	Porcentaje Margen Neto (MMBB)
+	OiDeudaFinancTotalMMBB	Money	Deuda Financiera Total MMBB
+	OiDeudaFiscalTotalMMBB	Money	Deuda Fiscal Total MMBB
+
+	oDatosVentas  (solo camino largo)
+	parámetro	tipo	Descripción
+	OiVentasPostCierreTotal	money	Ventas Post-Cierre Totales
+	OiVentasPostCierreProm	money	Ventas Post-Cierre  Promedio
+	OiVarVtasPostCierreBalance	money	Variación Ventas Post-Cierre Promedio contra Balance
+	OdVerifDesvio10P	Texto	Verificación Desvío mayor a 10% entre Ventas Totales Declaradas y Ventas IVA DF
+	OiVarVtasPostCierrePerHomog	money	Variación Ventas Post-Cierre Períodos Homogéneos
+	OiVtasUlt12MesesReal	money	Ventas Ultimos 12 meses Real
+	OiVtasUlt12MesesCalcLineas	money	Ventas Ultimos 12 meses para Cálculo de Líneas
+
+	oArrayVentasPostCierreMes  (solo camino largo) (máximo 12)
+	parámetro	tipo	Descripción
+	OiVentasPostCierreMes	money	Ventas Post-Cierre mes
+
+
+	oDatosDeudaCl  (solo camino largo)
+	parámetro	tipo	Descripción
+	OiRelacDeudaCPVenta	money	Relación Deuda CP sobre Ventas
+	OiVarDeudaTotDeclarEECCMMBB	money	Variación Deuda Total Declarada vs. Deuda EECC/MMBB
+	OiGeneracionProyectada	money	Generación Proyectada
+	OiRelCompromisoGenProyec	money	Relación Sobre Generación Proyectada
+	OiCompromisoTitularBureau	money	compromiso titu bureau
+
+	oDatosInmueble  (solo camino largo)
+	parámetro	tipo	Descripción
+	oArrayValorLibre	oArrayValorLibre	Lista de datos valor libre del Inmueble (Máximo 11) 
+	OiTotalInmuebleLibre	money	Monto Total Inmuebles Libres
+	OiTotalInmLibresTitular	money	Monto Total Inmuebles Libres Titular
+	OiTotalInmLibreFiadoreOtros	money	Monto Total Inmuebles Libres Fiadores y Otros
+	OiTotalInmValPondTitular	money	Monto Total Inmuebles Valor Ponderado Titular
+	OiTotalInmPondFiadorOtros	money	Monto Total Inmuebles Valor Ponderado Fiadores+Otros
+
+	oArrayValorLibre  (solo camino largo) (máximo 11)
+	parámetro	tipo	Descripción
+	OiValorLibreInmueble	Decimal	Valor Libre del Inmueble
+
+	oDatosIndicadoresCL  (solo camino largo)
+	parámetro	tipo	Descripción
+	OnIndScoreVerazTitular	Decimal	Indicadores Score Veraz Titular
+	OdIindCalidadInformacion	Texto	Indicadores Calidad de la Información
+	OnIndAniosActividad	Decimal	Indicadores Años en la actividad
+	OnIndInmPropios	Decimal	Indicadores Valor Inmuebles Propios
+	OnIndValInmLibrePropAval	Decimal	Indicadores Valor Inm. Libres Prop. y Aval.
+	OnIndLiquidezCte	Decimal	Indicadores Liquidez Cte.
+	OnIndEndeudamiento	Decimal	Indicadores Endeudamiento
+	OnIndUtilVentaUltEj	Decimal	Indicadores Utilidad Ult. Ej. / Vtas
+	OnIndUtilVentasEjAnt	Decimal	Indicadores Utilidad Ej. Ant. / Vtas
+	OpIndEvolVentasEj	Decimal	Indicadores Evolución Vtas. Ejercicio (%) 
+	OpIndEvolVtasPostHomog	Decimal	Indicadores Evol. Vtas. Post - Homog. (%)
+	OnIndTotVtasUlt12m	Decimal	Indicadores Total Ventas Ult. 12 meses
+	OnIndDsBancFinanCPPost	Decimal	Indicadores Ds. Banc. y Fcieras. CP (Post)
+	OnIndDsBancFinanPost	Decimal	Indicadores Ds. Banc. y Fcieras.  (Post)
+	OnIndDsBancFinanCpVtasUtl12m	Decimal	Indicadores Ds. B.yFras. CP / Vtas.Ult.12 m 
+	OnIndDsBancFinanPn	Decimal	Indicadores Ds. Banc. y Fcieras. / PN
+	OnIndApalacPonderado	Decimal	Indicadores Apalancamiento Ponderado
+	OiScorePymeAjustado	Money	Score PyME Final
+
+
+	oDatosIngresosCL
+	parámetro	tipo	Descripción
+92	OiIngreso	Money	ingreso
+93	OiIngresoComputable	Money	ingreso computable
+94	OiIngresoComputableNeto	Money	ingreso computable neto
+95	OiIngresoEstimadoTitular	Money	ingreso estimado titu
+
+
+	oDatosAfectacionesCL (solo camino largo)
+	parámetro	tipo	Descripción
+	OiAfectacionIngrComputableNeto	Money	afectación ingreso computable neto
+	OiAfectIngresoCompNetoUVA	Money	afectacion ingreso computable neto UVA
+	OiAfectacionAdicDisponible	Money	afectación adicional disponible
+	OiMontoAfectAdicDisponible	Money	monto afectación adicional disponible
+	OiAfectacionAdicDispUva	Money	afectación adicional disponible UVA
+	OiMontoAfectAdicionalDispUva	Money	monto afectación adicional disponible UVA
+	OiAfectDispPhPersonal	Money	Afectación disponible para PH Personal
+	OiAfectDisponiblePp	Money	Afectación disponible para PP
+	OiMontoAfectacionTC	Money	Afectación disponible para TC
+
+	oDatosTopesCL (solo camino largo)
+	parámetro	tipo	Descripción
+	OiTopeEndeudGlobalInterno	Decimal	tope endeudamiento global interno
+	OiTopeEndeudLimiteInterno	Decimal	tope endeudamiento limite interno
+	OiTopeEndeudHipoInterno	Decimal	Tope endeudamiento Hipotecario interno
+	OiTopeEndeudHipoInternoUVA	Decimal	Tope endeudamiento Hipotecario interno UVA
+	OiTopeEndeudPpInterno	Decimal	Tope endeudamiento Préstamo Personal interno
+	OiTopeLtv	Decimal	Tope LTV
+	OiMaxComercialLp	Decimal	Máximo Comerciales LP
+	OiMontoProdConsumoVentas	Money	monto productos de consumo por ventas
+
+
+	oDatosMontoAsistRapida (solo camino largo)
+	parámetro	tipo	Descripción
+	OiSolaFirma	Decimal	SOLA FIRMA
+	OiSFAdelantoCuenta	Decimal	SOLA FIRMA - ADELANTO EN CUENTA 
+	OiSFAcuerdoCtaCte	Decimal	SOLA FIRMA - ACUERDOS EN CUENTA CORRIENTE 
+	OiSFPrestamoAmortizable	Decimal	SOLA FIRMA - PRESTAMOS AMORTIZABLES 
+	OiSFFinancExportacion	Decimal	SOLA FIRMA - FINANCIACION DE EXPORTACIONES 
+	OiSFPrefinancExportacion	Decimal	SOLA FIRMA - PREFINANCIACION DE EXPORTACION 
+	OiSFCartaCredImportacion	Decimal	SOLA FIRMA - CARTA DE CREDITO DE IMPORTACION 
+	OiSFFinancImportacion	Decimal	SOLA FIRMA - FINANCIACION DE IMPORTACION 
+	OiSFTarjetaCredito	Decimal	SOLA FIRMA - TARJETA DE CREDITO 
+	OiSFPrestLocalExport	Decimal	SOLA FIRMA - PRESTAMO LOCAL A EXPORTADORES 
+	OiSFLinCredInverProduct	Decimal	SOLA FIRMA - LÍNEA DE CRÉDITOS PARA LA INVERSIÓN PRODUCTIVA 
+	OiSFPrestConsumoLP	Decimal	SOLA FIRMA - PMO. DE CONSUMO LP 
+	OiDescuentoCheque	Decimal	DESCUENTO DE CHEQUES 
+	OiDescCheques	Decimal	DESCUENTO DE CHEQUES  - DESCUENTO DE CHEQUES 
+	OiRiesgo2448H	Decimal	RIESGO 24/48 HS 
+	OiRiesgo2448Horas	Decimal	RIESGO 24/48 HS  - RIESGO 24/48 HS 
+	OiPagoExpresoCupoTC	Decimal	PAGO EXPRESO CUP TC 
+	OiPagoExpresoCuponesTC	Decimal	PAGO EXPRESO CUP TC  - PAGO EXPRESO DE CUPONES 
+
+	oArrayMontoAsistRapida (solo camino largo) (máximo 45)
+	parámetro	tipo	Descripción
+	OdLineaAr	string	Línea
+	OdSublineaAr	string	Sublinea
+	OiMontoAr	Decimal	Monto 
+
+
+
+	oDatosMontoMaxScoring (solo camino largo)
+	parámetro	tipo	Descripción
+	OiSolaFirma	Decimal	SOLA FIRMA
+	OiSFAdelantoCta	Decimal	SOLA FIRMA - ADELANTO EN CUENTA 
+	OiSFAcuerdoCtaCte	Decimal	SOLA FIRMA - ACUERDOS EN CUENTA CORRIENTE 
+	OiSFPrestAmortizable	Decimal	SOLA FIRMA - PRESTAMOS AMORTIZABLES 
+	OiSFGarantOtorgada	Decimal	SOLA FIRMA - GARANTIAS OTORGADAS 
+	OiSFOperPmosSepymes	Decimal	SOLA FIRMA - OPERATORIA PMOS SEPYMES 
+	OiSFFinancExportacion	Decimal	SOLA FIRMA - FINANCIACION DE EXPORTACIONES 
+	OiSFPrefinancExport	Decimal	SOLA FIRMA - PREFINANCIACION DE EXPORTACION 
+	OiSFCartaCredImport	Decimal	SOLA FIRMA - CARTA DE CREDITO DE IMPORTACION 
+	OiSFAvanLetra	Decimal	SOLA FIRMA - AVAL DE LETRAS 
+	OiSfFinancImport	Decimal	SOLA FIRMA - FINANCIACION DE IMPORTACION 
+	OiSFTarjetaCredito	Decimal	SOLA FIRMA - TARJETA DE CREDITO 
+	OiSFPrestLocalExport	Decimal	SOLA FIRMA - PRESTAMO LOCAL A EXPORTADORES 
+	OiSFFinancProductor	Decimal	SOLA FIRMA - FINANCIACION A PRODUCTOR / PROC. DE BIENES 
+	OiSFCampoXXIPagoInt	Decimal	SOLA FIRMA - CAMPO XXI PAGO INTEGRO 
+	OiSFCampoXXIAmort	Decimal	SOLA FIRMA - CAMPO XXI AMORTIZABLE 
+	OiSFLinCredInverProduc	Decimal	SOLA FIRMA - LÍNEA DE CRÉDITOS PARA LA INVERSIÓN PRODUCTIVA 
+	OiSFPrestConsumoLP	Decimal	SOLA FIRMA - PMO. DE CONSUMO LP 
+	OiDescuentoCheque	Decimal	DESCUENTO DE CHEQUES 
+	OiDescCheques	Decimal	DESCUENTO DE CHEQUES  - DESCUENTO DE CHEQUES 
+	OiRiesgo2448H	Decimal	RIESGO 24/48 HS 
+	OiRiesgo2448Horas	Decimal	RIESGO 24/48 HS  - RIESGO 24/48 HS 
+	OiPagoExpresoCupoTC	Decimal	PAGO EXPRESO CUP TC 
+	OiPagoExpresoCuponesTC	Decimal	PAGO EXPRESO CUP TC  - PAGO EXPRESO DE CUPONES 
+	OiLeasing	Decimal	LEASING
+	OiLeasingBienLocFinan	Decimal	LEASING - BIENES EN LOCACION FINANCIERA 
+	OiLeasingLinCredInverProduc	Decimal	LEASING - LÍNEA DE CRÉDITOS PARA LA INVERSIÓN PRODUCTIVA 
+	OiPrestGarantPrend	Decimal	PRESTAMO CON GTIA PRENDARIA 
+	OiPrestGarantPrendaria	Decimal	PRESTAMO CON GTIA PRENDARIA  - PRESTAMOS CON GARANTIA PRENDARIA 
+	OiPrestGarantLinCredInvProd	Decimal	PRESTAMO CON GTIA PRENDARIA  - LÍNEA DE CRÉDITOS PARA LA INVERSIÓN PRODUCTIVA 
+	OiPrestHipotecario	Decimal	PMO. HIPOTECARIO
+	OiPrestHipAdelCta	Decimal	PMO. HIPOTECARIO - ADELANTO EN CUENTA 
+	OiPrestHipoGarantHipot	Decimal	PMO. HIPOTECARIO - PRESTAMOS CON GARANTIA HIPOTECARIA 
+	OiPrestHipoVivienda	Decimal	PMO. HIPOTECARIO - PRESTAMOS HIPOTECARIOS VIVIENDA 
+	OiPrestHipoTarjCred	Decimal	PMO. HIPOTECARIO - TARJETA DE CREDITO 
+	OiPrestHipoPacGarantHip	Decimal	PMO. HIPOTECARIO - PAC. C/GTIA HIPOTECARIA 
+	OiPrestHipoLinCredInvProd	Decimal	PMO. HIPOTECARIO - LÍNEA DE CRÉDITOS PARA LA INVERSIÓN PRODUCTIVA 
+	OiTarjetaCredito	Decimal	TARJETA DE CREDITO 
+	OiTarjCred	Decimal	TARJETA DE CREDITO  - TARJETA DE CREDITO 
+	OiPrendarioUsado	Decimal	PRENDARIOS USADOS
+	OiPrendUsaPrestGar	Decimal	PRENDARIOS USADOS - PMOS GTIA PRENDARIA USADOS
+
+
+	oArrayMontoMaxScoring (solo camino largo) (máximo 85)
+	parámetro	tipo	Descripción
+	OdLineaMs	string	Línea
+	OdSublineaMs	string	Sublinea
+	OiMontoMs	Decimal	Monto 
+
+
+	oDatosMontoFinalCL (solo camino largo)
+	parámetro	tipo	Descripción
+	OiMontoFinalSolaFirmaAr	Money	Monto Final Sola Firma (Asist. Rápida)
+	OiMontoFinalPrestSfLpAr	Money	Monto Final Pmo. Sola Firma LP (Asist. Rápida)
+	OiSublimTarjCredFinalAr	Money	Sublímite Tarjeta de Crédito Final (Asist. Rápida)
+	OiMontoFinalR2448Ar	Money	Monto Final R24/48hs (Asist. Rápida)
+	OiMontoFinalCpdAr	Money	CPD Final (Asist. Rápida)
+	OiPagoExpressCupFinalAr	Money	Pago Express de Cupones Final (Asist. Rápida)
+	OiMontoFinalSf	Money	Monto Final Sola Firma
+	OiMontoFinalSfCp	Money	Monto Final Sola Firma CP
+	OiMontoFinalSFfLp	Money	Monto Final Sola Firma LP
+	OiMontoFinalSfSublimTc	Money	Monto Final Sola Firma - Sublim. TC
+	OiMontoFinalR2448	Money	Monto Final R2448
+	OiMontoFinalCpd	Money	Monto Final CPD
+	OiMontoFinalPagoCupon	Money	Monto Final Pago Cupones
+	OiMontoFinalPh	Money	Monto Final Hipotecario
+	OiMontoFinalPrendNuevo	Money	Monto Final Prendario (nuevos)
+	OiMontoFinalLeasing	Money	Monto Final Leasing
+	OiMontoFinalPrendUsado	Money	Monto Final Prendario Usado
+	OiMontoFinalPhPersonal	Money	Monto Final PH Personal 
+	OiCuotaPhPersonal	Money	Cuota Préstamo Hipotecario Personal
+	OiMMontoFinalPp	Money	Monto Final Prestamo Personal 
+	OiCuotaPrestPersonal	Money	Cuota Préstamo Personal
+	OiMontoFinalTc	Money	Monto Final Tarjeta de Crédito
+
+	oDatosResultadosCl (solo camino largo)
+	parámetro	tipo	Descripción
+	OdEvaluacionRegla2doFiltro	Texto	Evaluación Reglas 2do Filtro
+	OdEvaluacionFinal	Texto	Evaluación Final
+	OdNivelAutorizante	Texto	Nivel Autorizante
+	OmAsistRapida	Texto	Marca de Asistencia Rápida
