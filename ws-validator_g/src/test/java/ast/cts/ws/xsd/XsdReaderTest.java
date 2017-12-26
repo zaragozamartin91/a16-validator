@@ -42,13 +42,14 @@ public class XsdReaderTest {
 		assertFalse(simpleElement.isComplex());
 
 		XsdElement nonExistentChild = simpleElement.getComplexChild();
-		assertEquals(XsdElement.VOID, nonExistentChild);
+		assertEquals(RegularXsdElement.VOID, nonExistentChild);
 		assertTrue(nonExistentChild.getType().isEmpty());
 
 		XsdElement complexElement = xsdReader.getElement("SegundoFiltroFil", "iArrayLineas");
 		assertFalse(complexElement.isVoid());
 		assertTrue(complexElement.isComplex());
 		assertTrue(complexElement.getType().isEmpty());
+		assertTrue(complexElement.hasChildrenWithType("IarrayLineas", "tns"));
 
 		XsdElement complexChild = complexElement.getComplexChild();
 		assertFalse(complexChild.isVoid());

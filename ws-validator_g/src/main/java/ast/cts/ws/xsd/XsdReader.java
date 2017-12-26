@@ -53,6 +53,6 @@ public class XsdReader {
 				.compile(String.format("//complexType[@name='%s']/sequence/element[@name='%s']", typeName, elementName));
 		NodeList nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
 
-		return nodes.getLength() == 0 ? XsdElement.VOID : new XsdElement(nodes.item(0));
+		return nodes.getLength() == 0 ? RegularXsdElement.VOID : new RegularXsdElement(nodes.item(0));
 	}
 }
