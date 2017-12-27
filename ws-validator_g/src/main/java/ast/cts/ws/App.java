@@ -26,7 +26,8 @@ public class App {
         String inputName = configuration.getInputName();
         String outputName = configuration.getOutputName();
         boolean lenientRead = configuration.isLenientSwitchOn();
-        A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead);
+        int subtitleRowCount = configuration.getSubtitleRowCount();
+        A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, subtitleRowCount);
 
         File a16txtFile = selectFile("Seleccionar archivo de tablas a16", "txt");
         if (a16txtFile == null) { return; }

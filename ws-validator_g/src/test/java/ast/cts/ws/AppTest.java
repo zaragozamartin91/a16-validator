@@ -34,25 +34,6 @@ public class AppTest {
 		configuration = Configuration.getInstance();
 	}
 
-	@Test
-	public void testReadInput() throws IOException {
-		InputStream resource = AppTest.class.getClassLoader().getResourceAsStream("cobiscorp.ecobis.consultagruposriesgo-input.txt");
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resource));
-
-		String line;
-		while ((line = bufferedReader.readLine()) != null) {
-			line = line.trim().replaceAll("\t+", ",");
-
-			String[] split = line.split(Pattern.quote(","));
-			String name = split[configuration.getNameCol()].trim();
-			String type = split[configuration.getTypeCol()].trim();
-
-			System.out.println(name);
-			System.out.println(type);
-		}
-
-		bufferedReader.close();
-	}
 
 	@Test
 	public void testReadXsd() throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {

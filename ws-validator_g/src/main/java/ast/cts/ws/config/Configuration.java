@@ -29,6 +29,7 @@ public class Configuration {
     private ColDelim colDelim;
     private String inputName;
     private String outputName;
+    private int subtitleRowCount;
 
     public static Configuration getInstance() { return ourInstance; }
 
@@ -76,6 +77,8 @@ public class Configuration {
 
         inputName = properties.getProperty("type.input.name", "").trim();
         outputName = properties.getProperty("type.output.name", "").trim();
+
+        subtitleRowCount = Integer.parseInt(properties.getProperty("subtitle.row.count", "1").trim());
     }
 
     private void validateProps() {
@@ -104,4 +107,6 @@ public class Configuration {
     public String getInputName() { return inputName; }
 
     public String getOutputName() { return outputName; }
+
+    public int getSubtitleRowCount() { return subtitleRowCount; }
 }

@@ -20,7 +20,7 @@ public class MainValidatorTest {
 		String inputName = "SegundoFiltroFil";
 		String outputName = "SegundoFiltroRet";
 		boolean lenientRead = false;
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead);
+		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, 1);
 
 		InputStream a16stream = MainValidatorTest.class.getClassLoader().getResourceAsStream("SegundoFiltro-input.txt");
 		A16Doc a16doc = a16DocReader.readA16Txt(a16stream);
@@ -56,7 +56,7 @@ public class MainValidatorTest {
 		String inputName = "ConsultaGrupoRiesgoFil";
 		String outputName = "ConsultaGruposRiesgoRet";
 		boolean lenientRead = false;
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead);
+		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, 1);
 
 		InputStream a16stream = MainValidatorTest.class.getClassLoader().getResourceAsStream("CONSULTA_GRUPOS_RIESGO-input.txt");
 		A16Doc a16doc = a16DocReader.readA16Txt(a16stream);

@@ -9,6 +9,9 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import java.util.regex.Pattern;
 
+/**
+ * Elemento regular de xsd.
+ */
 public class RegularXsdElement implements XsdElement {
 	public static final XsdElement VOID = VoidXsdElement.getInstance();
 	private static XPath XPATH = XpathBuilder.INSTANCE.build();

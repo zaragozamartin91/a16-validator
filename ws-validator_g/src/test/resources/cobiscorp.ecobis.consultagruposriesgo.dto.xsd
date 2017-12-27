@@ -9,7 +9,7 @@
 	
 	<complexType name="ConsultaGrupoRiesgoFil">
 		<sequence>
-			<element name="i_c_tipo_id_tributario" type="string" minOccurs="0" />
+			<element name="iCtipoIdTributario" type="string" minOccurs="0" />
 			<element name="iNidTributario" type="string" minOccurs="0" />
 			<element name="iCtipoGrupo" type="string" minOccurs="0" />
 			<element name="iSgrupo" type="int" minOccurs="0" />
