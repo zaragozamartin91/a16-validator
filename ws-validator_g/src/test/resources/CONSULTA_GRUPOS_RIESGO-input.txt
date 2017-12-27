@@ -1,0 +1,44 @@
+Input
+parámetro	tipo	Req.	Descripción
+i_c_tipo_id_tributario	varchar	N	Código de tipo de documento
+(Requerido para operación 1)
+i_n_id_tributario	varchar	N	Número de tipo de documento
+(Requerido para operación 1)
+i_s_grupo	interger	N	Secuencial del grupo
+(Requerido para operación 2)
+i_c_tipo_grupo	Char(1)	N	Tipo de grupo
+R – Riesgo
+E – Económico (Para operación 1y 2)
+i_c_opcion	Char(1)	S	1 – Consulta Grupo de riesgo
+2 – Consulta de miembros del grupo
+
+
+Output
+parámetro	Tipo	Descripción
+o_m_posee_grupo	Char(1)	S - Si el cliente está incluido en un grupo de riesgo
+N – caso contrario
+o_s_grupo	Interger	número de grupo de riesgo del cliente
+o_d_nombre_grupo	Varchar	Nombre del grupo
+o_d_observacion	Varchar	Observaciones del grupo
+o_c_banca	Varchar	Código de Banca a la que pertenece el grupo
+o_c_segmento	Varchar	Código del segmento del grupo
+o_u_oficial	Varchar(8)	Login del oficial
+ArrayMiembrosGrupo	OMiembrosGrupo	Resulset de salida
+
+
+OMiembrosGrupo
+parámetro	tipo	Descripción
+o_s_grupo	Interger	Secuencial del grupo
+o_d_grupo	Varchar(64)	Descripción del grupo
+o_m_vinculacion	Char(1)	
+o_c_tipo_id_cte	Varchar(10)	Tipo documento controlante
+o_n_id_cte	Varchar(20)	Número de documento controlante
+o_c_cliente_cte	Interger	Código de cliente Cobis controlante
+o_d_controlante	Varchar(64)	Nombre Controlante
+o_c_tipo_id_cda	Varchar(10)	Tipo documento controlada
+o_n_id_cda	Varchar(20)	Número de documento controlada
+o_c_cliente_cda	Interger	Código de cliente Cobis controlada
+o_d_controlada	Varchar(64)	Nombre Controlada
+o_p_participacion	Decimal	Porcentaje de participación
+o_m_director	Char(1)	Marca director común
+

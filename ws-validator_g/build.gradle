@@ -68,11 +68,15 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+
+    maven {
+        url "http://jcenter.bintray.com"
+    }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile name: 'jword-1.0'
+//    compile name: 'jword-1.0'
 }
 
 /* Defino un task para crear un jar que contenga el codigo fuente */

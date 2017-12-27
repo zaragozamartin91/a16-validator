@@ -6,7 +6,8 @@ public class A16Row {
 
 	public A16Row(String name, String type) {
 		this.name = name.trim();
-		this.type = type.toLowerCase().trim();
+//		this.type = type.toLowerCase().trim();
+		this.type = type.trim();
 	}
 
 	@Override public String toString() {

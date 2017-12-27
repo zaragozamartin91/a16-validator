@@ -62,6 +62,7 @@ public class XsdReader {
 	public XsdElement getElement(String typeName, String elementName) throws XPathExpressionException {
 		XPathExpression expr = XPATH
 				.compile(String.format("//complexType[@name='%s']/sequence/element[@name='%s']", typeName, elementName));
+
 		NodeList nodes = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
 
 		return nodes.getLength() == 0 ? RegularXsdElement.VOID : new RegularXsdElement(nodes.item(0));

@@ -1,6 +1,7 @@
 package ast.cts.ws;
 
 import ast.cts.ws.a16.A16Table;
+import ast.cts.ws.config.Configuration;
 import ast.cts.ws.util.StringStandardizer;
 import org.junit.BeforeClass;
 import org.junit.Test;
