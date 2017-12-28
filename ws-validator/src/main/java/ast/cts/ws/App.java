@@ -9,6 +9,7 @@ import ast.cts.ws.xsd.XsdReader;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,14 +24,7 @@ public class App {
 	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
 		Configuration configuration = Configuration.getInstance();
 
-		int nameCol = configuration.getNameCol();
-		int typeCol = configuration.getTypeCol();
-		String colDelim = configuration.getColDelim().delim;
-		String inputName = configuration.getInputName();
-		String outputName = configuration.getOutputName();
-		boolean lenientRead = configuration.isLenientSwitchOn();
-		int subtitleRowCount = configuration.getSubtitleRowCount();
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, subtitleRowCount);
+		A16DocReader a16DocReader = buildA16DocReader(configuration);
 
 		File a16txtFile = selectFile("Seleccionar archivo de tablas a16", "txt");
 		if (a16txtFile == null) { return; }
@@ -51,7 +45,7 @@ public class App {
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
 		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
-		boolean lenientCheck = lenientRead;
+		boolean lenientCheck = configuration.isLenientSwitchOn();
 		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate(lenientCheck);
 
 		System.out.println();
@@ -61,12 +55,25 @@ public class App {
 			printer.println(valMsg.msg);
 		});
 
-		pressAnyKeyToContinue();
+		pressEnterToContinue();
+	}
+
+	private static A16DocReader buildA16DocReader(Configuration configuration) {
+		int nameCol = configuration.getNameCol();
+		int typeCol = configuration.getTypeCol();
+		String colDelim = configuration.getColDelim().delim;
+		String inputName = configuration.getInputName();
+		String outputName = configuration.getOutputName();
+		boolean lenientRead = configuration.isLenientSwitchOn();
+		int subtitleRowCount = configuration.getSubtitleRowCount();
+		return new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, subtitleRowCount);
 	}
 
 	private static File selectFile(String title, String extension) {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(new File("./"));
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("ARCHIVOS " + extension, extension, extension);
+		fileChooser.setFileFilter(filter);
 		fileChooser.setDialogTitle(title);
 		fileChooser.showOpenDialog(null);
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -82,7 +89,7 @@ public class App {
 		return selectFile(title, extension);
 	}
 
-	private static void pressAnyKeyToContinue() {
+	private static void pressEnterToContinue() {
 		System.out.println("Presiona ENTER para continuar...");
 		try { System.in.read(); } catch (Exception e) { }
 	}
