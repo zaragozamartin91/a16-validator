@@ -1,54 +1,10 @@
 group 'ast.cts.ws'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    repositories {
-        maven {
-            url "http://jcenter.bintray.com"
-        }
-    }
-    dependencies {
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.4"
-    }
-}
-apply plugin: "com.jfrog.artifactory"
-
-
-def ARTIFACTORY_BASE_URL = 'http://srvcs-desa:8089/artifactory'
-def ARTIFACTORY_USERNAME = 'admin'
-def ARTIFACTORY_PASSWORD = 'password'
-
-/* Configuro artifactory para la resolucion de dependencias y para el deploy de artefactos */
-artifactory {
-    contextUrl = ARTIFACTORY_BASE_URL
-    //The base Artifactory URL if not overridden by the publisher/resolver
-
-    publish {
-        contextUrl = ARTIFACTORY_BASE_URL   //The base Artifactory URL for the publisher
-        //A closure defining publishing information
-        repository {
-            repoKey = 'ext-snapshot-local'   //The Artifactory repository key to publish to
-            username = ARTIFACTORY_USERNAME           //The publisher user name
-            password = ARTIFACTORY_PASSWORD          //The publisher password
-            maven = true
-        }
-
-    }
-
-    resolve {
-        contextUrl = ARTIFACTORY_BASE_URL       //The base Artifactory URL for the resolver
-        repository {
-            repoKey = 'libs-release'
-            username = ARTIFACTORY_USERNAME     //Optional resolver user name (leave out to use anonymous resolution)
-            password = ARTIFACTORY_PASSWORD     //The resolver password
-            maven = true                        //Resolve Maven-style artifacts and descriptors (true by default)
-        }
-    }
-}
 
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'maven-publish'
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.2.1'
@@ -63,14 +19,6 @@ tasks.withType(JavaCompile) {
 }
 
 repositories {
-//    maven {
-//        credentials {
-//            username = ARTIFACTORY_USERNAME
-//            password = ARTIFACTORY_PASSWORD
-//        }
-//        url "${ARTIFACTORY_BASE_URL}/libs-release"
-//    }
-
     flatDir {
         dirs 'libs'
     }
@@ -82,10 +30,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-//    compile name: 'jword-1.0'
-    // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi
-    compile group: 'org.fusesource.jansi', name: 'jansi', version: '1.16'
-
 }
 
 /* Defino un task para crear un jar que contenga el codigo fuente */
@@ -93,38 +37,21 @@ task sourceJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
-/* Configuro la publicacion de los componentes en artifactory */
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
 
-            artifact sourceJar { classifier "sources" }
+jar.dependsOn(sourceJar)
+
+mainClassName = "ast.cts.ws.App"
+
+/* Copia los archivos de configuracion al directorio del entregable */
+task copyFiles(dependsOn: 'installDist') {
+    doLast {
+        copy {
+            from "${buildDir}/resources/main"
+            into "${buildDir}/install/ws-validator"
         }
     }
 }
 
-/* Configuro el task de publicacion de artefactos en ARTIFACTORY */
-artifactoryPublish {
-    skip = false //Skip build info analysis and publishing (false by default)
-    contextUrl = ARTIFACTORY_BASE_URL
 
-    publications('mavenJava')
-
-    clientConfig.publisher.repoKey = 'ext-snapshot-local'
-    clientConfig.publisher.username = ARTIFACTORY_USERNAME
-    clientConfig.publisher.password = ARTIFACTORY_PASSWORD
-}
-
-jar.dependsOn(sourceJar)
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'ast.cts.ws.App'
-    }
-}
-
-artifactoryPublish.dependsOn(jar)
-
-mainClassName = "ast.cts.ws.App"
+task installFull(dependsOn: 'copyFiles') {}
 

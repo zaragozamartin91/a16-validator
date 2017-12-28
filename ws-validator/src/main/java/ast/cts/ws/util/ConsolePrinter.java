@@ -3,7 +3,7 @@ package ast.cts.ws.util;
 import java.util.function.Consumer;
 
 public enum ConsolePrinter {
-	OK(text -> System.out.println("OK\t\t: " + text)),
+	OK(text -> System.out.println("OK\t: " + text)),
 	ERROR(text -> System.out.println("ERROR\t: " + text));
 
 	private Consumer<String> printer;

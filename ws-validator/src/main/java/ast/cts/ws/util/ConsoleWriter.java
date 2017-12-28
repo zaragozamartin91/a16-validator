@@ -2,6 +2,8 @@ package ast.cts.ws.util;
 
 /**
  * Escritor de consola en distintos colores.
+ *
+ * @deprecated No funciona en windows
  */
 public enum ConsoleWriter {
     RED("\u001B[31m"),

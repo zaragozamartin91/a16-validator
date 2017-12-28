@@ -42,9 +42,9 @@ public class Configuration {
 				new File("../configuration.properties");
 
 		if (propsFile.exists()) {
-			System.out.println("Cargando configuraciones desde " + propsFile);
+			System.out.println("Cargando configuraciones desde " + propsFile.getAbsolutePath());
 		} else {
-			System.out.println("Cargando configuraciones desde JAR");
+			System.out.println("Cargando configuraciones desde el JAR");
 		}
 
 		InputStream resource = propsFile.exists() ?

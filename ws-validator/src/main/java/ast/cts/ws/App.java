@@ -66,7 +66,7 @@ public class App {
 
 	private static File selectFile(String title, String extension) {
 		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setCurrentDirectory(new File("../"));
+		fileChooser.setCurrentDirectory(new File("./"));
 		fileChooser.setDialogTitle(title);
 		fileChooser.showOpenDialog(null);
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -83,7 +83,7 @@ public class App {
 	}
 
 	private static void pressAnyKeyToContinue() {
-		System.out.println("Presiona cualquier tecla para continuar...");
+		System.out.println("Presiona ENTER para continuar...");
 		try { System.in.read(); } catch (Exception e) { }
 	}
 }
