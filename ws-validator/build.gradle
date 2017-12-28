@@ -47,6 +47,7 @@ artifactory {
 }
 
 apply plugin: 'java'
+apply plugin: 'application'
 apply plugin: 'maven-publish'
 
 task wrapper(type: Wrapper) {
@@ -62,13 +63,13 @@ tasks.withType(JavaCompile) {
 }
 
 repositories {
-    maven {
-        credentials {
-            username = ARTIFACTORY_USERNAME
-            password = ARTIFACTORY_PASSWORD
-        }
-        url "${ARTIFACTORY_BASE_URL}/libs-release"
-    }
+//    maven {
+//        credentials {
+//            username = ARTIFACTORY_USERNAME
+//            password = ARTIFACTORY_PASSWORD
+//        }
+//        url "${ARTIFACTORY_BASE_URL}/libs-release"
+//    }
 
     flatDir {
         dirs 'libs'
@@ -125,4 +126,5 @@ jar {
 
 artifactoryPublish.dependsOn(jar)
 
+mainClassName = "ast.cts.ws.App"
 

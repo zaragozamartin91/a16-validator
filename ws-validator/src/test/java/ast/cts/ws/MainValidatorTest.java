@@ -2,6 +2,7 @@ package ast.cts.ws;
 
 import ast.cts.ws.a16.A16Doc;
 import ast.cts.ws.a16.A16DocReader;
+import ast.cts.ws.util.ConsolePrinter;
 import ast.cts.ws.util.ConsoleWriter;
 import ast.cts.ws.util.TypeComparator;
 import ast.cts.ws.xsd.XsdReader;
@@ -43,8 +44,10 @@ public class MainValidatorTest {
 		System.out.println();
 		System.out.println("MENSAJES:");
 		validatorMessages.forEach(valMsg -> {
-			ConsoleWriter consoleWriter = valMsg.ok ? ConsoleWriter.GREEN : ConsoleWriter.RED;
-			consoleWriter.println(valMsg.msg);
+			//			ConsoleWriter consoleWriter = valMsg.ok ? ConsoleWriter.GREEN : ConsoleWriter.RED;
+			//			consoleWriter.println(valMsg.msg);
+			ConsolePrinter printer = valMsg.ok ? ConsolePrinter.OK : ConsolePrinter.ERROR;
+			printer.println(valMsg.msg);
 		});
 	}
 

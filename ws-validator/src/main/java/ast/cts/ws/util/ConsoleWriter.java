@@ -22,7 +22,9 @@ public enum ConsoleWriter {
      * Escribe una linea con salto al final.
      * @param text Texto a escribir.
      */
-    public void println(String text) { System.out.printf("%s%s%s%n", code, text, ANSI_RESET); }
+    public void println(String text) {
+        System.out.printf("%s%s%s%n", code, text, ANSI_RESET);
+    }
 
     /**
      * Escribe una linea.
