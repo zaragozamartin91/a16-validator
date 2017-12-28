@@ -5,12 +5,14 @@ import ast.cts.ws.a16.A16DocReader;
 import ast.cts.ws.config.Configuration;
 import ast.cts.ws.util.ConsolePrinter;
 import ast.cts.ws.util.TypeComparator;
+import ast.cts.ws.xsd.XsdMemReader;
 import ast.cts.ws.xsd.XsdReader;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,7 +23,7 @@ import java.util.List;
  * Hello world!
  */
 public class App {
-	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
+	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 		Configuration configuration = Configuration.getInstance();
 
 		A16DocReader a16DocReader = buildA16DocReader(configuration);
@@ -34,7 +36,8 @@ public class App {
 		File xsdFile = selectFile("Seleccionar archivo XSD", "xsd");
 		if (xsdFile == null) { return; }
 		InputStream xsdStream = new FileInputStream(xsdFile);
-		XsdReader xsdReader = XsdReader.fromStream(xsdStream);
+		//		XsdReader xsdReader = XsdFileReader.fromStream(xsdStream);
+		XsdReader xsdReader = XsdMemReader.fromStream(xsdStream, configuration.isLenientComplexTypeNames(), configuration.isLenientElementNames());
 
 		String xsdBasicTypePrefix = configuration.getXsdBasicTypePrefix();
 		String xsdComplexTypePrefix = configuration.getXsdComplexTypePrefix();
@@ -45,8 +48,7 @@ public class App {
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
 		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
-		boolean lenientCheck = configuration.isLenientSwitchOn();
-		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate(lenientCheck);
+		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate();
 
 		System.out.println();
 		System.out.println("MENSAJES:");
@@ -64,9 +66,9 @@ public class App {
 		String colDelim = configuration.getColDelim().delim;
 		String inputName = configuration.getInputName();
 		String outputName = configuration.getOutputName();
-		boolean lenientRead = configuration.isLenientSwitchOn();
+
 		int subtitleRowCount = configuration.getSubtitleRowCount();
-		return new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, subtitleRowCount);
+		return new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount);
 	}
 
 	private static File selectFile(String title, String extension) {

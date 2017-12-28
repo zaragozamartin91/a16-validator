@@ -21,7 +21,6 @@ public class A16DocReader {
 	private String colDelim;
 	private String inputName;
 	private String outputName;
-	private boolean lenientRead;
 	private int subtitleRowCount;
 
 	/**
@@ -32,20 +31,18 @@ public class A16DocReader {
 	 * @param colDelim         Delimitacion de columnas (ej: "\t" , " " )
 	 * @param inputName        Nombre a usar para reinterpretar la tabla input.
 	 * @param outputName       Nombre a usar para reinterpretar la tabla output.
-	 * @param lenientRead      Modo permisivo activo.
 	 * @param subtitleRowCount Cantidad de filas a ignorar despues de la fila de titulo
 	 */
-	public A16DocReader(int nameCol, int typeCol, String colDelim, String inputName, String outputName, boolean lenientRead, int subtitleRowCount) {
+	public A16DocReader(int nameCol, int typeCol, String colDelim, String inputName, String outputName, int subtitleRowCount) {
 		this.nameCol = nameCol;
 		this.typeCol = typeCol;
 		this.colDelim = colDelim;
 		this.inputName = inputName;
 		this.outputName = outputName;
-		this.lenientRead = lenientRead;
 		this.subtitleRowCount = subtitleRowCount;
 	}
 
-	private A16DocReader(InputStream fileStream, int nameCol, int typeCol, String colDelim, String inputName, String outputName, boolean lenientRead,
+	private A16DocReader(InputStream fileStream, int nameCol, int typeCol, String colDelim, String inputName, String outputName,
 			int subtitleRowCount) {
 		this.fileStream = fileStream;
 		this.nameCol = nameCol;
@@ -53,14 +50,13 @@ public class A16DocReader {
 		this.colDelim = colDelim;
 		this.inputName = inputName;
 		this.outputName = outputName;
-		this.lenientRead = lenientRead;
 		this.subtitleRowCount = subtitleRowCount;
 
 		expectedCols = Math.max(nameCol, typeCol) + 1;
 	}
 
 	public A16Doc readA16Txt(InputStream fileStream) throws IOException {
-		return new A16DocReader(fileStream, nameCol, typeCol, colDelim, inputName, outputName, lenientRead, subtitleRowCount).readA16Txt();
+		return new A16DocReader(fileStream, nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount).readA16Txt();
 	}
 
 	private A16Doc readA16Txt() throws IOException {
@@ -97,7 +93,7 @@ public class A16DocReader {
 	private String transformTitle(String title) {
 		if ("input".equalsIgnoreCase(title)) { return inputName; }
 		if ("output".equalsIgnoreCase(title)) { return outputName; }
-		return lenientRead ? StringStandardizer.INSTANCE.capitalize(title) : title;
+		return title;
 	}
 
 	private boolean addRows(A16Table table, BufferedReader bufferedReader) throws IOException {
@@ -115,10 +111,10 @@ public class A16DocReader {
 
 
 			/* Si la cantidad de columnas de la fila es 2 entonces agrego una nueva fila a la tabla de a16
-             * Caso contrario, es una "fila fallida" que debe ser ignorada */
+			 * Caso contrario, es una "fila fallida" que debe ser ignorada */
 			if (split.length >= expectedCols) {
 				String rawName = split[nameCol];
-				String name = lenientRead ? StringStandardizer.INSTANCE.deCapitalize(rawName) : rawName;
+				String name = rawName;
 
 				String type = split[typeCol];
 				table.addRow(name, type);

@@ -25,11 +25,14 @@ public class Configuration {
 	private List<String> decimalAliases = new ArrayList<>();
 	private String xsdBasicTypePrefix;
 	private String xsdComplexTypePrefix;
-	private boolean lenientSwitchOn;
+
 	private ColDelim colDelim;
 	private String inputName;
 	private String outputName;
 	private int subtitleRowCount;
+
+	private boolean lenientComplexTypeNames;
+	private boolean lenientElementNames;
 
 	public static Configuration getInstance() { return ourInstance; }
 
@@ -80,7 +83,8 @@ public class Configuration {
 		xsdBasicTypePrefix = properties.getProperty("type.xsd.prefix.basic", "").trim();
 		xsdComplexTypePrefix = properties.getProperty("type.xsd.prefix.custom", "").trim();
 
-		lenientSwitchOn = Boolean.parseBoolean(properties.getProperty("switch.lenient.on", "false").trim());
+		lenientComplexTypeNames = Boolean.parseBoolean(properties.getProperty("switch.lenient.types.on", "false"));
+		lenientElementNames = Boolean.parseBoolean(properties.getProperty("switch.lenient.fields.on", "false"));
 
 		colDelim = ColDelim.valueOf(properties.getProperty("delim.col", "TAB").trim());
 
@@ -109,8 +113,6 @@ public class Configuration {
 
 	public String getXsdComplexTypePrefix() { return xsdComplexTypePrefix; }
 
-	public boolean isLenientSwitchOn() { return lenientSwitchOn; }
-
 	public ColDelim getColDelim() { return colDelim; }
 
 	public String getInputName() { return inputName; }
@@ -118,4 +120,8 @@ public class Configuration {
 	public String getOutputName() { return outputName; }
 
 	public int getSubtitleRowCount() { return subtitleRowCount; }
+
+	public boolean isLenientComplexTypeNames() { return lenientComplexTypeNames; }
+
+	public boolean isLenientElementNames() { return lenientElementNames; }
 }

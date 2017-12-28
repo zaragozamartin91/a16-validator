@@ -21,11 +21,11 @@ public class TypeComparator {
 	 * @return
 	 */
 	public String parseType(String rawType) {
-		rawType = Optional.ofNullable(rawType).orElse("NULL");
+		final String frawType = Optional.ofNullable(rawType).orElse("NULL").trim().toLowerCase();
 
-		if (intAliases.stream().anyMatch(rawType::equalsIgnoreCase)) { return "int"; }
-		if (stringAliases.stream().anyMatch(rawType::equalsIgnoreCase)) { return "string"; }
-		if (decimalAliases.stream().anyMatch(rawType::equalsIgnoreCase)) { return "decimal"; }
+		if (intAliases.stream().anyMatch(frawType::equalsIgnoreCase)) { return "int"; }
+		if (stringAliases.stream().anyMatch(s -> frawType.startsWith(s.toLowerCase()))) { return "string"; }
+		if (decimalAliases.stream().anyMatch(frawType::equalsIgnoreCase)) { return "decimal"; }
 
 		return "unknown";
 	}
