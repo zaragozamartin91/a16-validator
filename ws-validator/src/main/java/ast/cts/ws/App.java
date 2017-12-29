@@ -54,7 +54,13 @@ public class App {
 		System.out.println("MENSAJES:");
 		validatorMessages.forEach(valMsg -> {
 			ConsolePrinter printer = valMsg.ok ? ConsolePrinter.OK : ConsolePrinter.ERROR;
-			printer.println(valMsg.msg);
+
+			if (configuration.isOutModeAll() ||
+					(valMsg.ok && configuration.isOutModeOk()) ||
+					(!valMsg.ok && configuration.isOutModeError())) {
+				printer.println(valMsg.msg);
+			}
+
 		});
 
 		pressEnterToContinue();

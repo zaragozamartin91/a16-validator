@@ -8,11 +8,19 @@ Los componentes entregables se generarán en el directorio __build/install/ws-va
 
 ## Archivos y configuración
 
+El programa puede ser configurado desde el archivo __$wsv/configuration.properties__
+
 El programa requiere de dos archivos para operar:
-* Archivo txt con tablas del a16 __CON UTF-8 ENCODING__
+* Archivo txt con tablas del a16:
+    * El archivo debe contener las tablas del A16
+    * Cada tabla debe estar separada por uno o más ENTERs
+    * Cada tabla debe comenzar con una línea de título (ej: Input, Output, IArrayEntidades, etc.)
+    * Cada linea despues del titulo de tabla es una fila
+    * Es posible configurar la cantidad de filas a ser ignoradas inmediatamente despues del titulo de una tabla
+    * Las columnas de cada fila deben estar separadas por espacios o TABS
+    * El archivo debe tener formato __UTF-8__
 * Archivo xsd del servicio web a validar
 
-El programa puede ser configurado desde el archivo __$wsv/configuration.properties__
 
 ## Uso
 
@@ -26,3 +34,4 @@ Para usar el componente, correr el script __$wsv/run.bat__:
 Es posible modificar el encoding de un archivo txt desde Notepad++:
 * Ir a encoding
 * Convert to UTF-8
+

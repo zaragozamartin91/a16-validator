@@ -33,6 +33,7 @@ public class Configuration {
 
 	private boolean lenientComplexTypeNames;
 	private boolean lenientElementNames;
+	private String outMode;
 
 	public static Configuration getInstance() { return ourInstance; }
 
@@ -92,6 +93,8 @@ public class Configuration {
 		outputName = properties.getProperty("type.output.name", "").trim();
 
 		subtitleRowCount = Integer.parseInt(properties.getProperty("subtitle.row.count", "1").trim());
+
+		outMode = properties.getProperty("out.mode", "all").toLowerCase().trim();
 	}
 
 	private void validateProps() {
@@ -124,4 +127,10 @@ public class Configuration {
 	public boolean isLenientComplexTypeNames() { return lenientComplexTypeNames; }
 
 	public boolean isLenientElementNames() { return lenientElementNames; }
+
+	public boolean isOutModeAll() { return "all".equalsIgnoreCase(outMode); }
+
+	public boolean isOutModeOk() { return "ok".equalsIgnoreCase(outMode); }
+
+	public boolean isOutModeError() { return "error".equalsIgnoreCase(outMode); }
 }

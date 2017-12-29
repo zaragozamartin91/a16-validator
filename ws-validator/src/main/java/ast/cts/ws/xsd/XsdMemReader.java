@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class XsdMemReader implements XsdReader {
 	private static final XPath XPATH = XpathBuilder.INSTANCE.build();
@@ -67,13 +67,13 @@ public class XsdMemReader implements XsdReader {
 	}
 
 	public XsdElement getElement(String typeName, String elementName) throws XPathExpressionException {
-		List<Element> complexTypes = lenientTypeName ?
-				this.complexTypes.stream().filter(element -> element.getAttribute("name").equalsIgnoreCase(typeName)).collect(Collectors.toList()) :
-				this.complexTypes.stream().filter(element -> element.getAttribute("name").equals(typeName)).collect(Collectors.toList());
+		Optional<Element> octype = lenientTypeName ?
+				this.complexTypes.stream().filter(element -> element.getAttribute("name").equalsIgnoreCase(typeName)).findFirst() :
+				this.complexTypes.stream().filter(element -> element.getAttribute("name").equals(typeName)).findFirst();
 
-		if (complexTypes.isEmpty()) { return RegularXsdElement.VOID; }
+		if (!octype.isPresent()) { return RegularXsdElement.VOID; }
 
-		Element complexType = complexTypes.get(0);
+		Element complexType = octype.get();
 
 		XPathExpression elemExpr = XPATH.compile("sequence/element");
 		NodeList elements = (NodeList) elemExpr.evaluate(complexType, XPathConstants.NODESET);
