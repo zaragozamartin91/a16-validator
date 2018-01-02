@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.cts.ast/" targetNamespace="http://webservices.cts.ast/" version="1.0">
+
+  <xs:element name="REAltaDetalleChequesCACRes" type="tns:REAltaDetalleChequesCACRes"/>
+
+  <xs:element name="REAltaDetalleChequesCACRet" type="tns:REAltaDetalleChequesCACRet"/>
+
+  <xs:element name="execute" type="tns:execute"/>
+
+  <xs:element name="executeResponse" type="tns:executeResponse"/>
+
+  <xs:element name="rEAltaDetalleChequesCACFil" type="tns:rEAltaDetalleChequesCACFil"/>
+
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="requestConnection" type="tns:requestConnection"/>
+      <xs:element minOccurs="0" name="chequesCACFil" type="tns:rEAltaDetalleChequesCACFil"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestConnection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applicationID" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="sessionID" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="rEAltaDetalleChequesCACFil">
+    <xs:sequence>
+      <xs:element name="i_n_cuit" nillable="true" type="xs:string"/>
+      <xs:element name="i_s_registro_deuda" nillable="true" type="xs:int"/>
+      <xs:element name="i_c_convenio" nillable="true" type="xs:int"/>
+      <xs:element name="i_d_depositante" nillable="true" type="xs:string"/>
+      <xs:element name="i_c_depositante" nillable="true" type="xs:string"/>
+      <xs:element name="i_c_comprobante" nillable="true" type="xs:string"/>
+      <xs:element name="i_n_moneda" nillable="true" type="xs:int"/>
+      <xs:element name="i_i_deuda_total" nillable="true" type="xs:decimal"/>
+      <xs:element name="i_i_cheque" nillable="true" type="xs:decimal"/>
+      <xs:element name="i_k_cheque" nillable="true" type="xs:int"/>
+      <xs:element name="i_k_filas" nillable="true" type="xs:int"/>
+      <xs:element name="i_c_tipo_deuda" nillable="true" type="xs:string"/>
+      <xs:element name="i_n_lote" nillable="true" type="xs:int"/>
+      <xs:element name="i_c_sucursal" nillable="true" type="xs:int"/>
+      <xs:element name="i_u_alta" nillable="true" type="xs:string"/>
+      <xs:element name="i_s_cac" nillable="true" type="xs:int"/>
+      <xs:element name="i_c_canal" nillable="true" type="xs:int"/>
+      <xs:element name="i_m_consolida_inmediata" nillable="true" type="xs:string"/>
+      <xs:element name="i_d_cheque_1" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_d_cheque_2" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_d_cheque_3" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_d_cheque_4" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_d_cheque_5" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="executeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:REAltaDetalleChequesCACRes"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="REAltaDetalleChequesCACRes">
+    <xs:sequence>
+      <xs:element name="serviceError" nillable="true" type="tns:serviceError"/>
+      <xs:element name="reAltaDetalleChequesCACRet" nillable="true" type="tns:REAltaDetalleChequesCACRet"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:long"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="REAltaDetalleChequesCACRet">
+    <xs:sequence>
+      <xs:element name="o_n_lote" nillable="true" type="xs:int"/>
+      <xs:element name="o_d_cheque_1" nillable="true" type="xs:string"/>
+      <xs:element name="o_d_cheque_2" nillable="true" type="xs:string"/>
+      <xs:element name="o_d_cheque_3" nillable="true" type="xs:string"/>
+      <xs:element name="o_d_cheque_4" nillable="true" type="xs:string"/>
+      <xs:element name="o_d_cheque_5" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

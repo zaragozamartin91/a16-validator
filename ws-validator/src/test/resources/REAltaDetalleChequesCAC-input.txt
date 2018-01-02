@@ -1,0 +1,35 @@
+Input
+parámetro	tipo	Req.	Descripción
+i_n_cuit           	varchar(13)	S	CUIT de depositante
+i_s_registro_deuda 	int        	S	Secuencial único de deuda.
+i_c_convenio       	int        	S	Nro. de convenio
+i_d_depositante    	varchar(30)	S	Nombre depositante
+i_c_depositante    	varchar(24)	S	Código de depositante
+i_c_comprobante 	varchar(24)	S	Código de comprobante
+i_n_moneda 	tinyint    	S	Moneda de la deuda
+i_i_deuda_total    	money      	S	Importe total de deuda.
+i_i_cheque         	money      	S	Importe total de Cheques que conforman la cobranza.
+i_k_cheque         	int 	S	Cantidad total de Cheques que conforman la cobranza.
+i_k_filas	int   	S	Se debe enviar la cantidad de cheques pendientes de enviar, esto se relaciona con el paginado, en caso de no necesitar paginado o que todo alcance en un solo llamado, enviar cero(0).
+i_c_tipo_deuda     	char(2)    	S	Informar siempre “DI”
+i_n_lote           	int        	S	Nro. de lote válido. Debe enviarse valor > 0
+i_c_sucursal       	smallint   	S	Sucursal donde se registra el pago
+i_u_alta	varchar(14)	S	Usuario que realiza la accion de registrar el pago
+i_s_cac	int 	S	Secuencial único enviado por CAC
+i_c_canal          	smallint   	S	Si llama CAC enviar 10 – Si es de Sucursales, 26. No se valida en CTS
+i_d_cheque_1	varchar(2500)	S	Detalle de cheques (hasta 12), separando cada dato de un cheque por “|” y cada cheque por “@@”
+i_d_cheque_2	varchar(2500)	N	Idem. Si no hay datos se devuelve vacío o nulo.
+i_d_cheque_3	varchar(2500)	N	Idem. Si no hay datos se devuelve vacío o nulo.
+i_d_cheque_4	varchar(2500)	N	Idem. Si no hay datos se devuelve vacío o nulo.
+i_d_cheque_5	varchar(2500)	N	Idem. Si no hay datos se devuelve vacío o nulo.
+
+Output
+parámetro	tipo	Descripción
+o_n_lote	int	Nro. de Lote. Puede no recibirse si hay errores (Code de Service Error > 0)
+o_d_cheque_1	varchar(2500)	Detalle de cheques (hasta 12), separando cada dato de un cheque por “|” y cada cheque por “@@”
+o_d_cheque_2	varchar(2500)	Idem. Si no hay datos se devuelve vacío o nulo.
+o_d_cheque_3	varchar(2500)	Idem. Si no hay datos se devuelve vacío o nulo.
+o_d_cheque_4	varchar(2500)	Idem. Si no hay datos se devuelve vacío o nulo.
+o_d_cheque_5	varchar(2500)	Idem. Si no hay datos se devuelve vacío o nulo.
+
+

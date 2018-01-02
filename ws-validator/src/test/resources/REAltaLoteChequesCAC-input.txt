@@ -1,0 +1,29 @@
+Input
+parámetro	tipo	Req.	Descripción
+i_n_cuit           	varchar(13)	S	CUIT de depositante
+i_s_registro_deuda 	int        	S	Secuencial único de deuda.
+i_c_convenio       	int        	S	Nro. de convenio
+i_d_depositante    	varchar(30)	S	Nombre depositante
+i_c_depositante    	varchar(24)	S	Código de depositante
+i_c_comprobante 	varchar(24)	S	Código de comprobante
+i_n_moneda 	tinyint    	S	Moneda de la deuda
+i_i_deuda_total    	money      	S	Importe total de deuda.
+i_i_cheque         	money      	S	Importe total de Cheques que conforman la cobranza.
+i_k_cheque         	int 	S	Cantidad total de Cheques que conforman la cobranza.
+i_c_tipo_deuda     	char(2)    	S	Puede ingresarse RE o DI.  Si es una directa enviar “DI”, si es reversa enviar “RE”
+i_n_lote           	int        	S	Si @i_c_tipo_deuda = “DI”, enviar 0 (cero), si @i_c_tipo_deuda = “RE” enviar el nro de lote RECA enviado cuando se hizo una “DI”
+i_c_sucursal       	smallint   	S	Sucursal donde se registra el pago
+i_u_alta	varchar(14)	S	Usuario que realiza la accion de registrar el pago
+i_s_cac	int 	S	Secuencial único enviado por CAC
+i_c_canal          	smallint   	S	Si llama CAC enviar 10
+i_m_consolida_inmediata	char(1)	S	Para captura desde Clientes enviar siempre “N”, para sucursal(etapa 2) se deberá enviar según lógica de A10
+
+Output
+parámetro	tipo	Descripción
+o_n_convenio	int	Código de Convenio
+o_m_deuda_nueva	char(1)	Marca si el convenio acepta deuda nueva, pueden devolverse los valores ”S” o “N”.
+o_a_tipo_cheque	char(1)	Tipo de cheques que acepta el convenio: C: común, D: diferido, A: ambos
+o_i_desvio_minimo	money	Monto de desvío mínimo
+o_i_desvio_maximo	money	Monto de desvío máximo
+o_n_lote	int	Nro. de Lote.
+

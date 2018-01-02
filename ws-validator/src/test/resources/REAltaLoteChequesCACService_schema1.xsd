@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.cts.ast/" targetNamespace="http://webservices.cts.ast/" version="1.0">
+
+  <xs:element name="REAltaLoteChequesCACRes" type="tns:REAltaLoteChequesCACRes"/>
+
+  <xs:element name="execute" type="tns:execute"/>
+
+  <xs:element name="executeResponse" type="tns:executeResponse"/>
+
+  <xs:element name="rEAltaLoteChequesCACRet" type="tns:rEAltaLoteChequesCACRet"/>
+
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="requestConnection" type="tns:requestConnection"/>
+      <xs:element minOccurs="0" name="rEAltaLoteChequesCACFil" type="tns:reAltaLoteChequesCACFil"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requestConnection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applicationID" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="sessionID" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reAltaLoteChequesCACFil">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="i_c_canal" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_c_comprobante" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_c_convenio" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_c_depositante" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_c_sucursal" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_c_tipo_deuda" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_d_depositante" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_i_cheque" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="i_i_deuda_total" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="i_k_cheque" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_m_consolida_inmediata" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_n_cuit" type="xs:string"/>
+      <xs:element minOccurs="0" name="i_n_lote" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_n_moneda" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_s_cac" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_s_registro_deuda" type="xs:int"/>
+      <xs:element minOccurs="0" name="i_u_alta" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="executeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:REAltaLoteChequesCACRes"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="REAltaLoteChequesCACRes">
+    <xs:sequence>
+      <xs:element name="serviceError" nillable="true" type="tns:serviceError"/>
+      <xs:element minOccurs="0" name="rEAltaLoteChequesCACRetLista" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="REAltaLoteChequesCACRet" nillable="true" type="tns:rEAltaLoteChequesCACRet"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:long"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="rEAltaLoteChequesCACRet">
+    <xs:sequence>
+      <xs:element name="o_n_convenio" nillable="true" type="xs:int"/>
+      <xs:element name="o_m_deuda_nueva" nillable="true" type="xs:string"/>
+      <xs:element name="o_a_tipo_cheque" nillable="true" type="xs:string"/>
+      <xs:element name="o_i_desvio_minimo" nillable="true" type="xs:decimal"/>
+      <xs:element name="o_i_desvio_maximo" nillable="true" type="xs:decimal"/>
+      <xs:element name="o_n_lote" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
