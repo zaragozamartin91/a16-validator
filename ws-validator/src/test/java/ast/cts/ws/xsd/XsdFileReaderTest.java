@@ -11,23 +11,23 @@ import java.io.InputStream;
 
 import static org.junit.Assert.*;
 
-public class XsdReaderTest {
+public class XsdFileReaderTest {
 
 	@BeforeClass
 	public static void beforeAll() {
 	}
 
 	private static InputStream getSimpleXsdStream() {
-		return XsdReaderTest.class.getClassLoader().getResourceAsStream("cobiscorp.ecobis.consultagruposriesgo.dto.xsd");
+		return XsdFileReaderTest.class.getClassLoader().getResourceAsStream("cobiscorp.ecobis.consultagruposriesgo.dto.xsd");
 	}
 
 	private static InputStream getComplexXsdStream() {
-		return XsdReaderTest.class.getClassLoader().getResourceAsStream("SegundoFiltro_schema1.xsd");
+		return XsdFileReaderTest.class.getClassLoader().getResourceAsStream("SegundoFiltro_schema1.xsd");
 	}
 
 	@Test
 	public void testReadXsdWithValidator() throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
-		XsdReader xsdValidator = XsdReader.fromStream(getSimpleXsdStream());
+		XsdFileReader xsdValidator = XsdFileReader.fromStream(getSimpleXsdStream());
 
 		boolean isvalid = xsdValidator.validateElement("ConsultaGrupoRiesgoFil", "iCtipoIdTributario", "string");
 		assertTrue(isvalid);
@@ -35,7 +35,7 @@ public class XsdReaderTest {
 
 	@Test
 	public void testGetElement() throws Exception {
-		XsdReader xsdReader = XsdReader.fromStream(getComplexXsdStream());
+		XsdReader xsdReader = XsdFileReader.fromStream(getComplexXsdStream());
 
 		XsdElement simpleElement = xsdReader.getElement("SegundoFiltroFil", "iDatosTitular");
 		assertFalse(simpleElement.isVoid());
@@ -58,4 +58,5 @@ public class XsdReaderTest {
 		assertEquals("IarrayLineas", complexChild.getType("tns"));
 		assertEquals("IarrayLineas", complexChild.getType("tns:"));
 	}
+
 }

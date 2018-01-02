@@ -9,7 +9,7 @@ public class A16DocReaderTest {
 	public void readA16Txt() throws Exception {
 		InputStream fileStream = A16DocReaderTest.class.getClassLoader().getResourceAsStream("SegundoFiltro-input.txt");
 
-		A16DocReader a16DocReader = new A16DocReader(1, 2, "\t", "SegundoFiltroFil", "SegundoFiltroRes", true, 1);
+		A16DocReader a16DocReader = new A16DocReader(1, 2, "\t", "SegundoFiltroFil", "SegundoFiltroRes", 1);
 		A16Doc a16Doc = a16DocReader.readA16Txt(fileStream);
 	}
 

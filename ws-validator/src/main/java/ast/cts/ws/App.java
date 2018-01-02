@@ -5,11 +5,14 @@ import ast.cts.ws.a16.A16DocReader;
 import ast.cts.ws.config.Configuration;
 import ast.cts.ws.util.ConsolePrinter;
 import ast.cts.ws.util.TypeComparator;
+import ast.cts.ws.xsd.XsdMemReader;
 import ast.cts.ws.xsd.XsdReader;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,17 +23,10 @@ import java.util.List;
  * Hello world!
  */
 public class App {
-	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
+	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 		Configuration configuration = Configuration.getInstance();
 
-		int nameCol = configuration.getNameCol();
-		int typeCol = configuration.getTypeCol();
-		String colDelim = configuration.getColDelim().delim;
-		String inputName = configuration.getInputName();
-		String outputName = configuration.getOutputName();
-		boolean lenientRead = configuration.isLenientSwitchOn();
-		int subtitleRowCount = configuration.getSubtitleRowCount();
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, lenientRead, subtitleRowCount);
+		A16DocReader a16DocReader = buildA16DocReader(configuration);
 
 		File a16txtFile = selectFile("Seleccionar archivo de tablas a16", "txt");
 		if (a16txtFile == null) { return; }
@@ -40,7 +36,8 @@ public class App {
 		File xsdFile = selectFile("Seleccionar archivo XSD", "xsd");
 		if (xsdFile == null) { return; }
 		InputStream xsdStream = new FileInputStream(xsdFile);
-		XsdReader xsdReader = XsdReader.fromStream(xsdStream);
+		//		XsdReader xsdReader = XsdFileReader.fromStream(xsdStream);
+		XsdReader xsdReader = XsdMemReader.fromStream(xsdStream, configuration.isLenientComplexTypeNames(), configuration.isLenientElementNames());
 
 		String xsdBasicTypePrefix = configuration.getXsdBasicTypePrefix();
 		String xsdComplexTypePrefix = configuration.getXsdComplexTypePrefix();
@@ -51,22 +48,40 @@ public class App {
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
 		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
-		boolean lenientCheck = lenientRead;
-		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate(lenientCheck);
+		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate();
 
 		System.out.println();
 		System.out.println("MENSAJES:");
 		validatorMessages.forEach(valMsg -> {
 			ConsolePrinter printer = valMsg.ok ? ConsolePrinter.OK : ConsolePrinter.ERROR;
-			printer.println(valMsg.msg);
+
+			if (configuration.isOutModeAll() ||
+					(valMsg.ok && configuration.isOutModeOk()) ||
+					(!valMsg.ok && configuration.isOutModeError())) {
+				printer.println(valMsg.msg);
+			}
+
 		});
 
-		pressAnyKeyToContinue();
+		pressEnterToContinue();
+	}
+
+	private static A16DocReader buildA16DocReader(Configuration configuration) {
+		int nameCol = configuration.getNameCol();
+		int typeCol = configuration.getTypeCol();
+		String colDelim = configuration.getColDelim().delim;
+		String inputName = configuration.getInputName();
+		String outputName = configuration.getOutputName();
+
+		int subtitleRowCount = configuration.getSubtitleRowCount();
+		return new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount);
 	}
 
 	private static File selectFile(String title, String extension) {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(new File("./"));
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("ARCHIVOS " + extension, extension, extension);
+		fileChooser.setFileFilter(filter);
 		fileChooser.setDialogTitle(title);
 		fileChooser.showOpenDialog(null);
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -82,7 +97,7 @@ public class App {
 		return selectFile(title, extension);
 	}
 
-	private static void pressAnyKeyToContinue() {
+	private static void pressEnterToContinue() {
 		System.out.println("Presiona ENTER para continuar...");
 		try { System.in.read(); } catch (Exception e) { }
 	}
