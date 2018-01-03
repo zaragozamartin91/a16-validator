@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public class A16SpDocReader {
@@ -40,7 +43,7 @@ public class A16SpDocReader {
         return a16SpDoc;
     }
 
-    public A16SpTable readTable(String titleLine, BufferedReader bufferedReader) throws IOException {
+    private A16SpTable readTable(String titleLine, BufferedReader bufferedReader) throws IOException {
         String spName = titleLine;
         String stype = bufferedReader.readLine().trim();
         A16SpTable table = new A16SpTable(spName, stype);
@@ -53,7 +56,7 @@ public class A16SpDocReader {
             line = line.trim();
             if (line.isEmpty()) { return table; }
 
-            line.replaceAll(colDelim + "+", ",");
+            line = line.replaceAll(colDelim + "+", ",");
             String[] split = line.split(Pattern.quote(","));
 
             A16SpRow row = buildRow(tableType, split);

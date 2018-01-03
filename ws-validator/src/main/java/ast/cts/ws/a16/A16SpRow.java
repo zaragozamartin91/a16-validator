@@ -18,4 +18,13 @@ public class A16SpRow {
     }
 
     public boolean hasType() { return type != null && !type.isEmpty(); }
+
+    @Override
+    public String toString() {
+        return "A16SpRow{" +
+                "left='" + left + '\'' +
+                ", right='" + right + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

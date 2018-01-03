@@ -6,7 +6,7 @@ input
 @i_c_canal	i_c_canal	char(2)
 @i_modo 	i_m_modo	Char(1)
 @i_i_monto	i_i_monto	money
-@i_m_quien_llama		char(1)	‘W’
+@i_m_quien_llama	‘W’	char(1)
 @i_c_moneda	i_c_moneda	int
 @i_n_sucursal	i_n_sucursal	Int
 

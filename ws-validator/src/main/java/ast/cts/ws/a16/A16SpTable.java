@@ -49,4 +49,13 @@ public class A16SpTable {
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "A16SpTable{" +
+                "spName='" + spName + '\'' +
+                ", type=" + type +
+                ", rows=" + rows +
+                '}';
+    }
 }
