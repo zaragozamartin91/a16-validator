@@ -20,9 +20,12 @@ public class A16SpDocReaderTest {
 
         A16SpTable inputTable = inputTables.get(0);
         assertEquals(9, inputTable.getRows().size());
+        assertEquals("cob_cartera..sp_ca_pp_canales", inputTable.getSpName());
 
         List<A16SpTable> outputTables = a16SpDoc.getOutputTables();
         assertEquals(1, outputTables.size());
+        A16SpTable outputTable = outputTables.get(0);
+        assertEquals("cob_cartera..sp_ca_pp_canales", outputTable.getSpName());
     }
 
 }

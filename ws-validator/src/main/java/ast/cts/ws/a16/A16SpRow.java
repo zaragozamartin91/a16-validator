@@ -21,10 +21,17 @@ public class A16SpRow {
 
     @Override
     public String toString() {
-        return "A16SpRow{" +
-                "left='" + left + '\'' +
-                ", right='" + right + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        if (hasType()) {
+            return "A16SpRow{" +
+                    "left='" + left + '\'' +
+                    ", right='" + right + '\'' +
+                    ", type='" + type + '\'' +
+                    '}';
+        } else {
+            return "A16SpRow{" +
+                    "left='" + left + '\'' +
+                    ", right='" + right + '\'' +
+                    '}';
+        }
     }
 }
