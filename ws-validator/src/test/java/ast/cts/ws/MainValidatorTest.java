@@ -1,7 +1,7 @@
 package ast.cts.ws;
 
-import ast.cts.ws.a16.A16Doc;
-import ast.cts.ws.a16.A16DocReader;
+import ast.cts.ws.a16.A16ServiceDoc;
+import ast.cts.ws.a16.A16ServiceDocReader;
 import ast.cts.ws.util.ConsolePrinter;
 import ast.cts.ws.util.ConsoleWriter;
 import ast.cts.ws.util.TypeComparator;
@@ -21,10 +21,10 @@ public class MainValidatorTest {
 		String colDelim = "\t";
 		String inputName = "SegundoFiltroFil";
 		String outputName = "SegundoFiltroRet";
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, 1);
+		A16ServiceDocReader a16ServiceDocReader = new A16ServiceDocReader(nameCol, typeCol, colDelim, inputName, outputName, 1);
 
 		InputStream a16stream = MainValidatorTest.class.getClassLoader().getResourceAsStream("SegundoFiltro-input.txt");
-		A16Doc a16doc = a16DocReader.readA16Txt(a16stream);
+		A16ServiceDoc a16ServiceDoc = a16ServiceDocReader.readA16Txt(a16stream);
 
 		InputStream xsdStream = MainValidatorTest.class.getClassLoader().getResourceAsStream("SegundoFiltro_schema1.xsd");
 		XsdReader xsdReader = XsdFileReader.fromStream(xsdStream);
@@ -37,7 +37,7 @@ public class MainValidatorTest {
 		List<String> decimalAliases = Arrays.asList("money", "moneda");
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
-		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
+		MainValidator mainValidator = new MainValidator(a16ServiceDoc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
 		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate();
 
 		System.out.println();
@@ -57,10 +57,10 @@ public class MainValidatorTest {
 		String colDelim = "\t";
 		String inputName = "ConsultaGrupoRiesgoFil";
 		String outputName = "ConsultaGruposRiesgoRet";
-		A16DocReader a16DocReader = new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, 1);
+		A16ServiceDocReader a16ServiceDocReader = new A16ServiceDocReader(nameCol, typeCol, colDelim, inputName, outputName, 1);
 
 		InputStream a16stream = MainValidatorTest.class.getClassLoader().getResourceAsStream("CONSULTA_GRUPOS_RIESGO-input.txt");
-		A16Doc a16doc = a16DocReader.readA16Txt(a16stream);
+		A16ServiceDoc a16ServiceDoc = a16ServiceDocReader.readA16Txt(a16stream);
 
 		InputStream xsdStream = MainValidatorTest.class.getClassLoader().getResourceAsStream("cobiscorp.ecobis.consultagruposriesgo.dto.xsd");
 		XsdReader xsdReader = XsdFileReader.fromStream(xsdStream);
@@ -73,7 +73,7 @@ public class MainValidatorTest {
 		List<String> decimalAliases = Arrays.asList("money", "moneda");
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
-		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
+		MainValidator mainValidator = new MainValidator(a16ServiceDoc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
 		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate();
 
 		System.out.println();

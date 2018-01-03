@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Interprete de archivos txt de tablas de a16
  */
-public class A16DocReader {
+public class A16ServiceDocReader {
 	private InputStream fileStream;
 	private int nameCol;
 	private int typeCol;
@@ -33,7 +33,7 @@ public class A16DocReader {
 	 * @param outputName       Nombre a usar para reinterpretar la tabla output.
 	 * @param subtitleRowCount Cantidad de filas a ignorar despues de la fila de titulo
 	 */
-	public A16DocReader(int nameCol, int typeCol, String colDelim, String inputName, String outputName, int subtitleRowCount) {
+	public A16ServiceDocReader(int nameCol, int typeCol, String colDelim, String inputName, String outputName, int subtitleRowCount) {
 		this.nameCol = nameCol;
 		this.typeCol = typeCol;
 		this.colDelim = colDelim;
@@ -42,8 +42,8 @@ public class A16DocReader {
 		this.subtitleRowCount = subtitleRowCount;
 	}
 
-	private A16DocReader(InputStream fileStream, int nameCol, int typeCol, String colDelim, String inputName, String outputName,
-			int subtitleRowCount) {
+	private A16ServiceDocReader(InputStream fileStream, int nameCol, int typeCol, String colDelim, String inputName, String outputName,
+								int subtitleRowCount) {
 		this.fileStream = fileStream;
 		this.nameCol = nameCol;
 		this.typeCol = typeCol;
@@ -55,14 +55,14 @@ public class A16DocReader {
 		expectedCols = Math.max(nameCol, typeCol) + 1;
 	}
 
-	public A16Doc readA16Txt(InputStream fileStream) throws IOException {
-		return new A16DocReader(fileStream, nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount).readA16Txt();
+	public A16ServiceDoc readA16Txt(InputStream fileStream) throws IOException {
+		return new A16ServiceDocReader(fileStream, nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount).readA16Txt();
 	}
 
-	private A16Doc readA16Txt() throws IOException {
+	private A16ServiceDoc readA16Txt() throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileStream, StandardCharsets.UTF_8));
 
-		Map<String, A16Table> tables = new LinkedHashMap<>();
+		Map<String, A16ServiceTable> tables = new LinkedHashMap<>();
 
 		while (true) {
 			String line = bufferedReader.readLine();
@@ -78,7 +78,7 @@ public class A16DocReader {
 				System.out.println();
 				System.out.println("Creando tabla: " + title);
 
-				A16Table table = new A16Table(title);
+				A16ServiceTable table = new A16ServiceTable(title);
 				boolean end = addRows(table, bufferedReader);
 				tables.put(title, table);
 				if (end) { break; }
@@ -87,7 +87,7 @@ public class A16DocReader {
 
 		bufferedReader.close();
 
-		return new A16Doc(tables);
+		return new A16ServiceDoc(tables);
 	}
 
 	private String transformTitle(String title) {
@@ -96,7 +96,7 @@ public class A16DocReader {
 		return title;
 	}
 
-	private boolean addRows(A16Table table, BufferedReader bufferedReader) throws IOException {
+	private boolean addRows(A16ServiceTable table, BufferedReader bufferedReader) throws IOException {
 		/* Se descarta la primera linea que son los titulos de la tabla */
 		for (int i = 0; i < subtitleRowCount; i++) { bufferedReader.readLine(); }
 

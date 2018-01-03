@@ -1,6 +1,6 @@
 package ast.cts.ws;
 
-import ast.cts.ws.a16.A16Table;
+import ast.cts.ws.a16.A16ServiceTable;
 import ast.cts.ws.config.Configuration;
 import ast.cts.ws.util.StringStandardizer;
 import org.junit.BeforeClass;
@@ -15,11 +15,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.*;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 
@@ -61,7 +59,7 @@ public class AppTest {
 		BufferedReader bufferedReader = new BufferedReader(
 				new InputStreamReader(AppTest.class.getClassLoader().getResourceAsStream("SegundoFiltro-input.txt")));
 
-		Map<String, A16Table> tables = new LinkedHashMap<>();
+		Map<String, A16ServiceTable> tables = new LinkedHashMap<>();
 		while (true) {
 			String line = bufferedReader.readLine();
 			if (line == null) { break; }
@@ -75,7 +73,7 @@ public class AppTest {
 				System.out.println();
 				System.out.println("Creando tabla: " + title);
 
-				A16Table table = new A16Table(title);
+				A16ServiceTable table = new A16ServiceTable(title);
 				boolean end = addRows(table, bufferedReader);
 				tables.put(title, table);
 				if (end) { break; }
@@ -85,7 +83,7 @@ public class AppTest {
 		bufferedReader.close();
 	}
 
-	private boolean addRows(A16Table table, BufferedReader bufferedReader) throws IOException {
+	private boolean addRows(A16ServiceTable table, BufferedReader bufferedReader) throws IOException {
 		/* Se descarta la primera linea que son los titulos de la tabla */
 		bufferedReader.readLine();
 

@@ -1,7 +1,7 @@
 package ast.cts.ws;
 
-import ast.cts.ws.a16.A16Doc;
-import ast.cts.ws.a16.A16DocReader;
+import ast.cts.ws.a16.A16ServiceDoc;
+import ast.cts.ws.a16.A16ServiceDocReader;
 import ast.cts.ws.config.Configuration;
 import ast.cts.ws.util.ConsolePrinter;
 import ast.cts.ws.util.TypeComparator;
@@ -26,12 +26,12 @@ public class App {
 	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 		Configuration configuration = Configuration.getInstance();
 
-		A16DocReader a16DocReader = buildA16DocReader(configuration);
+		A16ServiceDocReader a16ServiceDocReader = buildA16DocReader(configuration);
 
 		File a16txtFile = selectFile("Seleccionar archivo de tablas a16", "txt");
 		if (a16txtFile == null) { return; }
 		InputStream a16stream = new FileInputStream(a16txtFile);
-		A16Doc a16doc = a16DocReader.readA16Txt(a16stream);
+		A16ServiceDoc a16ServiceDoc = a16ServiceDocReader.readA16Txt(a16stream);
 
 		File xsdFile = selectFile("Seleccionar archivo XSD", "xsd");
 		if (xsdFile == null) { return; }
@@ -47,7 +47,7 @@ public class App {
 		List<String> decimalAliases = configuration.getDecimalAliases();
 		TypeComparator typeComparator = new TypeComparator(intAliases, stringAliases, decimalAliases);
 
-		MainValidator mainValidator = new MainValidator(a16doc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
+		MainValidator mainValidator = new MainValidator(a16ServiceDoc, xsdReader, xsdBasicTypePrefix, xsdComplexTypePrefix, typeComparator);
 		List<MainValidator.ValidatorMessage> validatorMessages = mainValidator.validate();
 
 		System.out.println();
@@ -66,7 +66,7 @@ public class App {
 		pressEnterToContinue();
 	}
 
-	private static A16DocReader buildA16DocReader(Configuration configuration) {
+	private static A16ServiceDocReader buildA16DocReader(Configuration configuration) {
 		int nameCol = configuration.getNameCol();
 		int typeCol = configuration.getTypeCol();
 		String colDelim = configuration.getColDelim().delim;
@@ -74,7 +74,7 @@ public class App {
 		String outputName = configuration.getOutputName();
 
 		int subtitleRowCount = configuration.getSubtitleRowCount();
-		return new A16DocReader(nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount);
+		return new A16ServiceDocReader(nameCol, typeCol, colDelim, inputName, outputName, subtitleRowCount);
 	}
 
 	private static File selectFile(String title, String extension) {

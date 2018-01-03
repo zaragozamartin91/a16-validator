@@ -1,0 +1,19 @@
+cob_cartera..sp_ca_pp_canales
+input
+@t_trn	7023	int
+@t_ejec	‘R’	char(1)
+@i_c_cliente	i_c_cliente	int
+@i_c_canal	i_c_canal	char(2)
+@i_modo 	i_m_modo	Char(1)
+@i_i_monto	i_i_monto	money
+@i_m_quien_llama		char(1)	‘W’
+@i_c_moneda	i_c_moneda	int
+@i_n_sucursal	i_n_sucursal	Int
+
+cob_cartera..sp_ca_pp_canales
+output
+@o_i_monto_min	o_i_monto_min		Monto mínimo que puede tomar el cliente
+@o_i_monto_max	o_i_monto_max		Monto máximo que puede tomar el cliente
+@o_c_moneda	o_c_moneda		Código de moneda
+
+

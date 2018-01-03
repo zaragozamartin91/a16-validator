@@ -1,0 +1,29 @@
+cob_cartera..sp_ca_pp_canales
+input
+@t_trn	7023	int
+@t_ejec	‘R’	char(1)
+@i_c_cliente	i_c_cliente	int
+@i_c_canal	i_c_canal	char(2)
+@i_modo 	i_m_modo	Char(1)
+@i_i_monto	i_i_monto	money
+@i_m_quien_llama		char(1)	‘W’
+@i_c_moneda	i_c_moneda	int
+@i_n_sucursal	i_n_sucursal	Int
+
+cob_cartera..sp_ca_pp_canales
+resultset
+pc_n_prospecto      	o_n_prospecto
+pc_i_preaprobado,	o_i_preaprobado
+pc_i_gtos,	o_i_gastos
+pc_n_cuenta,	o_n_cuenta
+pc_k_plazo,	o_k_plazo
+pc_t_alicuota_seguro	o_p_alicuota_seguro
+pc_i_cuota,	o_i_cuota
+pc_f_priven         	o_f_primer_ven
+pc_t_tna            	o_p_tna
+pc_t_tea            	o_p_tea
+pc_t_cft            	o_p_cft
+pc_i_cuota_promedio,	o_i_cuota_promedio
+pc_n_modulo	o_c_modulo
+pc_t_cft_s_iva	o_p_cft_s_iva
+

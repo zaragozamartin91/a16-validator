@@ -1,0 +1,24 @@
+cob_cartera..sp_ca_pp_canales
+input
+@t_trn	7023	int
+@t_ejec	‘R’	char(1)
+@i_c_cliente	i_c_cliente	int
+@i_c_canal	i_c_canal	char(2)
+@i_modo 	i_m_modo	Char(1)
+@i_i_monto	i_i_monto	money
+@i_m_quien_llama		char(1)	‘W’
+@i_c_moneda	i_c_moneda	int
+@i_n_sucursal	i_n_sucursal	Int
+
+cob_cartera..sp_ca_pp_canales
+Resultset
+"dp_d_nombre" 	o_d_nombre	smallint
+"dp_c_destino"	o_c_destino	varchar
+
+cob_cartera..sp_ca_pp_canales
+Resultset
+o_compania	o_c_compania
+o_desc_compania o_d_compania
+o_factor	o_p_factor
+o_tope_maximo	o_i_tope_maximo
+o_tipo_rubro	o_c_tipo_rubro

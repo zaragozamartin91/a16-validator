@@ -1,6 +1,6 @@
 package ast.cts.ws;
 
-import ast.cts.ws.a16.A16Doc;
+import ast.cts.ws.a16.A16ServiceDoc;
 import ast.cts.ws.util.StringStandardizer;
 import ast.cts.ws.util.TypeComparator;
 import ast.cts.ws.xsd.XsdElement;
@@ -13,14 +13,14 @@ import java.util.List;
 public class MainValidator {
 	public static final StringStandardizer STRING_STANDARDIZER = StringStandardizer.INSTANCE;
 
-	private final A16Doc a16Doc;
+	private final A16ServiceDoc a16ServiceDoc;
 	private XsdReader xsdReader;
 	private String xsdBasicTypePrefix;
 	private String xsdComplexTypePrefix;
 	private TypeComparator typeComparator;
 
-	public MainValidator(A16Doc a16Doc, XsdReader xsdReader, String xsdBasicTypePrefix, String xsdComplexTypePrefix, TypeComparator typeComparator) {
-		this.a16Doc = a16Doc;
+	public MainValidator(A16ServiceDoc a16ServiceDoc, XsdReader xsdReader, String xsdBasicTypePrefix, String xsdComplexTypePrefix, TypeComparator typeComparator) {
+		this.a16ServiceDoc = a16ServiceDoc;
 		this.xsdReader = xsdReader;
 		this.xsdBasicTypePrefix = xsdBasicTypePrefix;
 		this.xsdComplexTypePrefix = xsdComplexTypePrefix;
@@ -45,7 +45,7 @@ public class MainValidator {
 	public List<ValidatorMessage> validate() {
 		final List<ValidatorMessage> validatorMessages = new ArrayList<>();
 
-		a16Doc.forEachTable(table -> {
+		a16ServiceDoc.forEachTable(table -> {
 			final String tableTitle = table.getTitle();
 
 			boolean typeExists = xsdReader.typeExists(tableTitle);
@@ -80,7 +80,7 @@ public class MainValidator {
 				/* Si el parseador de tipos determino que es "desconocido" ...*/
 				if (typeComparator.isUnknown(a16ParsedType)) {
 
-					if (a16Doc.isNotCustomType(a16rowRawType)) {
+					if (a16ServiceDoc.isNotCustomType(a16rowRawType)) {
 						// si el tipo ademas de ser desconocido NO figura en las tablas del a16 -> el tipo es invalido
 						String msg = String.format("El tipo \"%s\" del campo %s->%s del A16 es INVALIDO!", a16rowRawType, tableTitle, a16rowName);
 						validatorMessages.add(new ValidatorMessage(false, msg));

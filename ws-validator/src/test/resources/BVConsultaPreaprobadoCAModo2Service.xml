@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<serviceClass name="BVConsultaPreaprobadoCAModo2Service" nsBase="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.Service" package="cobiscorp.ecobis.bvconsultapreaprobadoca.service" ns="http://service.bvconsultapreaprobadoca.ecobis.cobiscorp" module="BVConsultaPreaprobadoCA" productName="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.Service" productVersion="1.0.0.0">
+  <productProperties>
+    <property name="MavenGroupId" value="$(/product/@name)$" />
+    <property name="MavenArtifactId" value="$(/product/@name)$" />
+    <property name="MavenVersion" value="$(/product/@version)$" />
+  </productProperties>
+  <partialClass name="BVConsultaPreaprobadoCAModo2Service">
+    <services>
+      <service id="BVConsultaPreaprobadoCAModo2Service" netName="BVConsultaPreaprobadoCAModo2Service" javaName="bvConsultaPreaprobadoCAModo2Service" mappingType="STORED_PROCEDURE" mapId="e00944d55e6432ccf20f9fda2492b6fd">
+        <SRVMapping name="cob_cartera..sp_ca_pp_canales" trnCode="7023">
+          <DTOs>
+            <DTO direction="in" name="BVConsultaPreaprobadoCAFil" alias="inBVConsultaPreaprobadoCAFil" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.DTO" package="cobiscorp.ecobis.bvconsultapreaprobadoca.dto" ns="http://dto.bvconsultapreaprobadoca.ecobis.cobiscorp" required="true" />
+            <DTO direction="return" name="BVConsultaPreaprobadoCAModo2Ret" alias="returnBVConsultaPreaprobadoCAModo2Ret" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.DTO" package="cobiscorp.ecobis.bvconsultapreaprobadoca.dto" ns="http://dto.bvconsultapreaprobadoca.ecobis.cobiscorp" required="true">
+              <properties>
+                <property name="o_n_prospecto" propertyNet="O_n_prospecto" propertyJava="o_n_prospecto" setterJavaMethod="setO_n_prospecto" getterJavaMethod="getO_n_prospecto" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_i_preaprobado" propertyNet="O_i_preaprobado" propertyJava="o_i_preaprobado" setterJavaMethod="setO_i_preaprobado" getterJavaMethod="getO_i_preaprobado" xsdType="decimal?" netType="decimal?" javaType="java.math.BigDecimal" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_i_gastos" propertyNet="O_i_gastos" propertyJava="o_i_gastos" setterJavaMethod="setO_i_gastos" getterJavaMethod="getO_i_gastos" xsdType="decimal?" netType="decimal?" javaType="java.math.BigDecimal" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_n_cuenta" propertyNet="O_n_cuenta" propertyJava="o_n_cuenta" setterJavaMethod="setO_n_cuenta" getterJavaMethod="getO_n_cuenta" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_k_plazo" propertyNet="O_k_plazo" propertyJava="o_k_plazo" setterJavaMethod="setO_k_plazo" getterJavaMethod="getO_k_plazo" xsdType="int?" netType="int?" javaType="Integer" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_p_alicuota_seguro" propertyNet="O_p_alicuota_seguro" propertyJava="o_p_alicuota_seguro" setterJavaMethod="setO_p_alicuota_seguro" getterJavaMethod="getO_p_alicuota_seguro" xsdType="decimal?" netType="decimal?" javaType="java.math.BigDecimal" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_i_cuota" propertyNet="O_i_cuota" propertyJava="o_i_cuota" setterJavaMethod="setO_i_cuota" getterJavaMethod="getO_i_cuota" xsdType="decimal?" netType="decimal?" javaType="java.math.BigDecimal" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_f_primer_ven" propertyNet="O_f_primer_ven" propertyJava="o_f_primer_ven" setterJavaMethod="setO_f_primer_ven" getterJavaMethod="getO_f_primer_ven" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_p_tna" propertyNet="O_p_tna" propertyJava="o_p_tna" setterJavaMethod="setO_p_tna" getterJavaMethod="getO_p_tna" xsdType="double?" netType="double?" javaType="Double" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_p_tea" propertyNet="O_p_tea" propertyJava="o_p_tea" setterJavaMethod="setO_p_tea" getterJavaMethod="getO_p_tea" xsdType="double?" netType="double?" javaType="Double" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_p_cft" propertyNet="O_p_cft" propertyJava="o_p_cft" setterJavaMethod="setO_p_cft" getterJavaMethod="getO_p_cft" xsdType="double?" netType="double?" javaType="Double" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_i_cuota_promedio" propertyNet="O_i_cuota_promedio" propertyJava="o_i_cuota_promedio" setterJavaMethod="setO_i_cuota_promedio" getterJavaMethod="getO_i_cuota_promedio" xsdType="decimal?" netType="decimal?" javaType="java.math.BigDecimal" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_c_modulo" propertyNet="O_c_modulo" propertyJava="o_c_modulo" setterJavaMethod="setO_c_modulo" getterJavaMethod="getO_c_modulo" xsdType="int?" netType="int?" javaType="Integer" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_p_cft_s_iva" propertyNet="O_p_cft_s_iva" propertyJava="o_p_cft_s_iva" setterJavaMethod="setO_p_cft_s_iva" getterJavaMethod="getO_p_cft_s_iva" xsdType="double?" netType="double?" javaType="Double" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+              </properties>
+            </DTO>
+          </DTOs>
+          <parameterMappings>
+            <parameter name="@t_ejec" direction="in" mappingDirection="in" dataType="char" CTSDataType="SQLCHAR" JavaSQLType="CHAR" mappingType="CONSTANT" allowNull="false" contantValue="R" />
+            <parameter name="@i_c_cliente" direction="in" mappingDirection="in" dataType="int" CTSDataType="SQLINT4" JavaSQLType="INTEGER" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_c_cliente" />
+            <parameter name="@i_c_canal" direction="in" mappingDirection="in" dataType="varchar" CTSDataType="SQLVARCHAR" JavaSQLType="VARCHAR" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_c_canal" />
+            <parameter name="@i_m_modo" direction="in" mappingDirection="in" dataType="char" CTSDataType="SQLCHAR" JavaSQLType="CHAR" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_m_modo" />
+            <parameter name="@i_i_monto" direction="in" mappingDirection="in" dataType="money" CTSDataType="SQLMONEY" JavaSQLType="DECIMAL" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_i_monto" />
+            <parameter name="@i_m_quien_llama" direction="in" mappingDirection="in" dataType="char" CTSDataType="SQLCHAR" JavaSQLType="CHAR" mappingType="CONSTANT" allowNull="false" contantValue="W" />
+            <parameter name="@i_c_moneda" direction="in" mappingDirection="in" dataType="int" CTSDataType="SQLINT4" JavaSQLType="INTEGER" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_c_moneda" />
+            <parameter name="@i_n_sucursal" direction="in" mappingDirection="in" dataType="int" CTSDataType="SQLINT4" JavaSQLType="INTEGER" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_n_sucursal" />
+          </parameterMappings>
+          <resultMappings>
+            <result>
+              <DTOResult DTOAlias="returnBVConsultaPreaprobadoCAModo2Ret" MapReturn="true">
+                <columnMapping position="0" name="1" DTOPropertyName="o_n_prospecto" DataType="string" Format="" />
+                <columnMapping position="1" name="2" DTOPropertyName="o_i_preaprobado" DataType="decimal?" Format="" />
+                <columnMapping position="2" name="3" DTOPropertyName="o_i_gastos" DataType="decimal?" Format="" />
+                <columnMapping position="3" name="4" DTOPropertyName="o_n_cuenta" DataType="string" Format="" />
+                <columnMapping position="4" name="5" DTOPropertyName="o_k_plazo" DataType="int?" Format="" />
+                <columnMapping position="5" name="6" DTOPropertyName="o_p_alicuota_seguro" DataType="decimal?" Format="" />
+                <columnMapping position="6" name="7" DTOPropertyName="o_i_cuota" DataType="decimal?" Format="" />
+                <columnMapping position="7" name="8" DTOPropertyName="o_f_primer_ven" DataType="string" Format="" />
+                <columnMapping position="8" name="9" DTOPropertyName="o_p_tna" DataType="decimal?" Format="" />
+                <columnMapping position="9" name="10" DTOPropertyName="o_p_tea" DataType="decimal?" Format="" />
+                <columnMapping position="10" name="11" DTOPropertyName="o_p_cft" DataType="decimal?" Format="" />
+                <columnMapping position="11" name="12" DTOPropertyName="o_i_cuota_promedio" DataType="decimal?" Format="" />
+                <columnMapping position="12" name="13" DTOPropertyName="o_c_modulo" DataType="int?" Format="" />
+                <columnMapping position="13" name="14" DTOPropertyName="o_p_cft_s_iva" DataType="decimal?" Format="" />
+              </DTOResult>
+            </result>
+          </resultMappings>
+          <MappingProperties />
+        </SRVMapping>
+      </service>
+    </services>
+  </partialClass>
+</serviceClass>

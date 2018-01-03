@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<serviceClass name="BVConsultaPreaprobadoCAModo3Service" nsBase="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.Service" package="cobiscorp.ecobis.bvconsultapreaprobadoca.service" ns="http://service.bvconsultapreaprobadoca.ecobis.cobiscorp" module="BVConsultaPreaprobadoCA" productName="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.Service" productVersion="1.0.0.0">
+  <productProperties>
+    <property name="MavenGroupId" value="$(/product/@name)$" />
+    <property name="MavenArtifactId" value="$(/product/@name)$" />
+    <property name="MavenVersion" value="$(/product/@version)$" />
+  </productProperties>
+  <partialClass name="BVConsultaPreaprobadoCAModo3Service">
+    <services>
+      <service id="BVConsultaPreaprobadoCAModo3Service" netName="BVConsultaPreaprobadoCAModo3Service" javaName="bvConsultaPreaprobadoCAModo3Service" mappingType="STORED_PROCEDURE" mapId="e00944d55e6432ccf20f9fda2492b6fd">
+        <SRVMapping name="cob_cartera..sp_ca_pp_canales" trnCode="7023">
+          <DTOs>
+            <DTO direction="in" name="BVConsultaPreaprobadoCAFil" alias="inBVConsultaPreaprobadoCAFil" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.DTO" package="cobiscorp.ecobis.bvconsultapreaprobadoca.dto" ns="http://dto.bvconsultapreaprobadoca.ecobis.cobiscorp" required="true" />
+            <DTO direction="return" name="BVConsultaPreaprobadoCAModo3R1Ret" alias="returnBVConsultaPreaprobadoCAModo3R1Ret" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.DTO" package="cobiscorp.ecobis.bvconsultapreaprobadoca.dto" ns="http://dto.bvconsultapreaprobadoca.ecobis.cobiscorp" required="true">
+              <properties>
+                <property name="o_d_nombre" propertyNet="O_d_nombre" propertyJava="o_d_nombre" setterJavaMethod="setO_d_nombre" getterJavaMethod="getO_d_nombre" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_c_destino" propertyNet="O_c_destino" propertyJava="o_c_destino" setterJavaMethod="setO_c_destino" getterJavaMethod="getO_c_destino" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+              </properties>
+            </DTO>
+            <DTO direction="return" name="BVConsultaPreaprobadoCAModo3R2Ret" alias="returnBVConsultaPreaprobadoCAModo3R2Ret" namespace="COBISCorp.eCOBIS.BVConsultaPreaprobadoCA.DTO" package="cobiscorp.ecobis.bvconsultapreaprobadoca.dto" ns="http://dto.bvconsultapreaprobadoca.ecobis.cobiscorp" required="true">
+              <properties>
+                <property name="o_c_compania" propertyNet="O_c_compania" propertyJava="o_c_compania" setterJavaMethod="setO_c_compania" getterJavaMethod="getO_c_compania" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_d_compania" propertyNet="O_d_compania" propertyJava="o_d_compania" setterJavaMethod="setO_d_compania" getterJavaMethod="getO_d_compania" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_p_factor" propertyNet="O_p_factor" propertyJava="o_p_factor" setterJavaMethod="setO_p_factor" getterJavaMethod="getO_p_factor" xsdType="double?" netType="double?" javaType="Double" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_i_tope_maximo" propertyNet="O_i_tope_maximo" propertyJava="o_i_tope_maximo" setterJavaMethod="setO_i_tope_maximo" getterJavaMethod="getO_i_tope_maximo" xsdType="decimal?" netType="decimal?" javaType="java.math.BigDecimal" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+                <property name="o_c_tipo_rubro" propertyNet="O_c_tipo_rubro" propertyJava="o_c_tipo_rubro" setterJavaMethod="setO_c_tipo_rubro" getterJavaMethod="getO_c_tipo_rubro" xsdType="string" netType="string" javaType="String" cobisMapping="" isInherit="false" isComplexType="false" isCollectionType="false" required="false" encrypted="false" maxLength="0" />
+              </properties>
+            </DTO>
+          </DTOs>
+          <parameterMappings>
+            <parameter name="@t_ejec" direction="in" mappingDirection="in" dataType="char" CTSDataType="SQLCHAR" JavaSQLType="CHAR" mappingType="CONSTANT" allowNull="false" contantValue="R" />
+            <parameter name="@i_c_cliente" direction="in" mappingDirection="in" dataType="int" CTSDataType="SQLINT4" JavaSQLType="INTEGER" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_c_cliente" />
+            <parameter name="@i_c_canal" direction="in" mappingDirection="in" dataType="varchar" CTSDataType="SQLVARCHAR" JavaSQLType="VARCHAR" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_c_canal" />
+            <parameter name="@i_m_modo" direction="in" mappingDirection="in" dataType="char" CTSDataType="SQLCHAR" JavaSQLType="CHAR" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_m_modo" />
+            <parameter name="@i_i_monto" direction="in" mappingDirection="in" dataType="money" CTSDataType="SQLMONEY" JavaSQLType="DECIMAL" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_i_monto" />
+            <parameter name="@i_m_quien_llama" direction="in" mappingDirection="in" dataType="char" CTSDataType="SQLCHAR" JavaSQLType="CHAR" mappingType="CONSTANT" allowNull="false" contantValue="W" />
+            <parameter name="@i_c_moneda" direction="in" mappingDirection="in" dataType="int" CTSDataType="SQLINT4" JavaSQLType="INTEGER" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_c_moneda" />
+            <parameter name="@i_n_sucursal" direction="in" mappingDirection="in" dataType="int" CTSDataType="SQLINT4" JavaSQLType="INTEGER" mappingType="DTO" allowNull="false" DTOAlias="inBVConsultaPreaprobadoCAFil" DTOPropertyName="i_n_sucursal" />
+          </parameterMappings>
+          <resultMappings>
+            <result>
+              <DTOResult DTOAlias="returnBVConsultaPreaprobadoCAModo3R2Ret" MapReturn="true">
+                <columnMapping position="0" name="1" DTOPropertyName="o_c_compania" DataType="string" Format="" />
+                <columnMapping position="1" name="2" DTOPropertyName="o_d_compania" DataType="string" Format="" />
+                <columnMapping position="2" name="3" DTOPropertyName="o_p_factor" DataType="decimal?" Format="" />
+                <columnMapping position="3" name="4" DTOPropertyName="o_i_tope_maximo" DataType="decimal?" Format="" />
+                <columnMapping position="4" name="5" DTOPropertyName="o_c_tipo_rubro" DataType="string" Format="" />
+              </DTOResult>
+            </result>
+            <result>
+              <DTOResult DTOAlias="returnBVConsultaPreaprobadoCAModo3R1Ret" MapReturn="true">
+                <columnMapping position="0" name="1" DTOPropertyName="o_d_nombre" DataType="string" Format="" />
+                <columnMapping position="1" name="2" DTOPropertyName="o_c_destino" DataType="string" Format="" />
+              </DTOResult>
+            </result>
+          </resultMappings>
+          <MappingProperties />
+        </SRVMapping>
+      </service>
+    </services>
+  </partialClass>
+</serviceClass>
